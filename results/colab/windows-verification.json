@@ -1,0 +1,26 @@
+{
+  "platform": "Windows-10-10.0.26300-SP0",
+  "python": "3.11.0",
+  "model": "qwen3:4b-instruct",
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "source_revision": "b9a586aecf9837fdf991dddd55f07d26b43d3b64",
+  "real_e5_chroma_ollama": true,
+  "pytest": "172 passed in 29.54s",
+  "browser": "Chrome/158.0.8127.36",
+  "browser_start_utc": "2026-11-23T02:06:44.661909+00:00",
+  "browser_completed_utc": "2026-11-23T02:07:13.050717+00:00",
+  "browser_case_names": [
+    "measurement",
+    "capital",
+    "zyx",
+    "emergency",
+    "bp_hybrid"
+  ],
+  "media_sha256": {
+    "01-interface.png": "4def074680d681d285d17b62e238041f264867f267b4bb0d9e99e705bb7e2d15",
+    "02-answer-with-source.png": "f76247ccaa1012418f2ac939f144139e3113be555adf64ee8b7472c07a6ddfab",
+    "03-out-of-domain.png": "bacd8f07a140bf6f3ae58fc4e1f047e9b8741f807f33342ce60a0eb59e847d42",
+    "04-retrieval-source.png": "c08307ed506cbac8e48bd1a41fce046894a04ac86f0fe756ec77d795b2b0db91"
+  },
+  "fresh_start_outside_repo": true
+}

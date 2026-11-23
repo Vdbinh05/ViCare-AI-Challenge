@@ -1,0 +1,218 @@
+{
+  "passed": true,
+  "model": "qwen3:4b-instruct",
+  "method": "Hybrid",
+  "service_down_and_emergency": "bound loopback port with no listener",
+  "cases": [
+    {
+      "case": "supported",
+      "question": "Những yếu tố nào ảnh hưởng đến kết quả đo lưu huyết não?",
+      "status": "answered",
+      "reason_code": "SUPPORTED",
+      "answer": "Tài liệu [1] ghi “Một trong những yếu tố ảnh hưởng đến kết quả lưu huyết não là: Nhịp tim, huyết áp, độ nhớt của máu, áp lực nội sọ, dùng thuốc vận mạch.”\n\nBản demo học thuật. Thông tin chỉ để tham khảo và không thay thế tư vấn của nhân viên y tế.",
+      "sources": [
+        {
+          "number": 1,
+          "doc_id": "train-4308",
+          "chunk_id": "train-4308#0",
+          "cited": true,
+          "url": "https://www.vinmec.com/vi/tin-tuc/hoi-dap-bac-si/huyet-ap-thap-co-anh-huong-den-ket-qua-luu-huyet-nao-khong/"
+        },
+        {
+          "number": 2,
+          "doc_id": "train-3695",
+          "chunk_id": "train-3695#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 3,
+          "doc_id": "train-4346",
+          "chunk_id": "train-4346#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 4,
+          "doc_id": "validation-539",
+          "chunk_id": "validation-539#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 5,
+          "doc_id": "validation-963",
+          "chunk_id": "validation-963#0",
+          "cited": false,
+          "url": null
+        }
+      ],
+      "latency_ms": 2234.0,
+      "evidence_check": "source_and_measurement_relation_matched",
+      "passed": true
+    },
+    {
+      "case": "out_of_domain",
+      "question": "Thủ đô của nước Úc là gì?",
+      "status": "refused",
+      "reason_code": "OUT_OF_DOMAIN",
+      "answer": "Tôi là trợ lý tra cứu kiến thức sức khỏe. Câu hỏi này nằm ngoài phạm vi tài liệu tôi đang sử dụng.",
+      "sources": [],
+      "latency_ms": 31.0,
+      "evidence_check": null,
+      "passed": true
+    },
+    {
+      "case": "insufficient",
+      "question": "Thuốc giả định ZYX-9000 có chữa khỏi mọi bệnh mạn tính không?",
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "answer": "Tôi chưa tìm thấy đủ thông tin trong các tài liệu tham khảo để trả lời câu hỏi này một cách đáng tin cậy. Bạn có thể hỏi cụ thể hơn hoặc tham khảo nhân viên y tế có chuyên môn.",
+      "sources": [
+        {
+          "number": 1,
+          "doc_id": "train-6779",
+          "chunk_id": "train-6779#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 2,
+          "doc_id": "train-3476",
+          "chunk_id": "train-3476#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 3,
+          "doc_id": "test-533",
+          "chunk_id": "test-533#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 4,
+          "doc_id": "train-3226",
+          "chunk_id": "train-3226#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 5,
+          "doc_id": "train-6572",
+          "chunk_id": "train-6572#0",
+          "cited": false,
+          "url": null
+        }
+      ],
+      "latency_ms": 906.0,
+      "evidence_check": null,
+      "passed": true
+    },
+    {
+      "case": "bp_scope",
+      "question": "Những yếu tố nào liên quan đến huyết áp cao?",
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "answer": "Tôi chưa tìm thấy đủ thông tin trong các tài liệu tham khảo để trả lời câu hỏi này một cách đáng tin cậy. Bạn có thể hỏi cụ thể hơn hoặc tham khảo nhân viên y tế có chuyên môn.",
+      "sources": [
+        {
+          "number": 1,
+          "doc_id": "train-5784",
+          "chunk_id": "train-5784#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 2,
+          "doc_id": "train-742",
+          "chunk_id": "train-742#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 3,
+          "doc_id": "train-3393",
+          "chunk_id": "train-3393#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 4,
+          "doc_id": "train-1107",
+          "chunk_id": "train-1107#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 5,
+          "doc_id": "train-4308",
+          "chunk_id": "train-4308#0",
+          "cited": false,
+          "url": null
+        }
+      ],
+      "latency_ms": 5125.0,
+      "evidence_check": null,
+      "passed": true
+    },
+    {
+      "case": "service_down",
+      "question": "Những yếu tố nào ảnh hưởng đến kết quả đo lưu huyết não?",
+      "status": "unavailable",
+      "reason_code": "GENERATION_FAILURE",
+      "answer": "Chưa kết nối được Ollama tại địa chỉ đã cấu hình.",
+      "sources": [
+        {
+          "number": 1,
+          "doc_id": "train-4308",
+          "chunk_id": "train-4308#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 2,
+          "doc_id": "train-3695",
+          "chunk_id": "train-3695#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 3,
+          "doc_id": "train-4346",
+          "chunk_id": "train-4346#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 4,
+          "doc_id": "validation-539",
+          "chunk_id": "validation-539#0",
+          "cited": false,
+          "url": null
+        },
+        {
+          "number": 5,
+          "doc_id": "validation-963",
+          "chunk_id": "validation-963#0",
+          "cited": false,
+          "url": null
+        }
+      ],
+      "latency_ms": 2094.0,
+      "evidence_check": null,
+      "passed": true
+    },
+    {
+      "case": "emergency",
+      "question": "Người nhà bất tỉnh, tôi phải làm gì?",
+      "status": "emergency",
+      "reason_code": "EMERGENCY",
+      "answer": "Đây có thể là tình huống cần hỗ trợ y tế khẩn cấp. Nếu đang ở Việt Nam, hãy gọi 115 hoặc tìm hỗ trợ cấp cứu trực tiếp ngay.",
+      "sources": [],
+      "latency_ms": 0.0,
+      "evidence_check": null,
+      "passed": true
+    }
+  ]
+}

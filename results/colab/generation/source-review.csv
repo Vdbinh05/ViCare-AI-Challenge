@@ -1,0 +1,136 @@
+run,question_id,rank,doc_id,chunk_id,matches_gold_document,approved_by_evidence_gate,cited_in_answer,source_support_agent,source_note_agent
+dense-final,d000,1,validation-122,validation-122#0,True,True,False,trực tiếp,Phân biệt các mức độ của đúng tình trạng và yêu cầu sàng lọc trước tiêm.
+dense-final,d000,2,train-4566,train-4566#0,False,False,False,khác bệnh cảnh,Tiêm khi một bệnh mạn khác ổn định hoặc có tiền sử dị ứng.
+dense-final,d000,3,train-6119,train-6119#0,False,False,False,khác bệnh cảnh,Phân loại mức độ dị ứng thuốc trước tiêm.
+dense-final,d000,4,train-1635,train-1635#0,False,False,False,khác bệnh cảnh,Phân loại tiền sử dị ứng kháng sinh trước tiêm.
+dense-final,d000,5,validation-978,validation-978#0,False,False,False,khác bệnh cảnh,Điều kiện liên quan đến tiền sử dị ứng thuốc điều trị bệnh khác.
+dense-final,d001,1,train-5669,train-5669#0,False,True,False,một phần,Trình bày vai trò của AMH trong ước lượng dự trữ buồng trứng.
+dense-final,d001,2,test-1708,test-1708#0,False,False,False,một phần,"Cùng xét nghiệm, trường hợp minh họa có giá trị rất thấp."
+dense-final,d001,3,train-5007,train-5007#0,False,False,False,khác xét nghiệm,Giải thích kết quả xét nghiệm tế bào máu.
+dense-final,d001,4,train-1316,train-1316#0,False,True,False,một phần,Diễn giải giá trị khác và giới hạn khi dùng AMH để chẩn đoán.
+dense-final,d001,5,train-138,train-138#0,False,True,False,một phần,"Nêu khoảng tham khảo và phụ thuộc tuổi, không xác định chuẩn của lần đo được hỏi."
+dense-final,d002,1,validation-870,validation-870#0,False,False,False,không liên quan,Tư thế đầu ở trẻ sơ sinh.
+dense-final,d002,2,validation-515,validation-515#0,True,True,False,trực tiếp,Có cả hai cơ chế di truyền và sự khác nhau trong đánh giá thai kỳ sau.
+dense-final,d002,3,test-1713,test-1713#0,False,False,False,không liên quan,Theo dõi trẻ sau ngã.
+dense-final,d002,4,validation-179,validation-179#0,False,False,False,không liên quan,Dấu hiệu dậy thì.
+dense-final,d002,5,train-53,train-53#1,False,False,False,không liên quan,Hệ quả của suy giáp bẩm sinh.
+dense-final,d003,1,train-3673,train-3673#0,False,False,False,một phần,Bàn về chóng mặt ngắn khi thay đổi tư thế cùng triệu chứng khác.
+dense-final,d003,2,train-1497,train-1497#0,False,False,False,một phần,Định nghĩa chóng mặt và yếu tố tư thế.
+dense-final,d003,3,train-2472,train-2472#0,False,False,False,một phần,"Mô tả chóng mặt tư thế, thiếu các triệu chứng đi cùng câu hỏi."
+dense-final,d003,4,train-750,train-750#0,False,False,False,một phần,Có dấu hiệu khi đổi tư thế nhưng với tập hợp triệu chứng khác.
+dense-final,d003,5,validation-214,validation-214#0,False,False,False,khác bệnh cảnh,Hướng dẫn theo dõi sau đánh giá trước đó.
+dense-final,d004,1,validation-525,validation-525#0,True,True,False,trực tiếp,Mô tả đúng bơm tiêm dùng một lần của sản phẩm.
+dense-final,d004,2,train-2379,train-2379#0,False,False,False,khác thuộc tính,"Giới thiệu vắc-xin, bệnh đích và lịch tiêm."
+dense-final,d004,3,train-3908,train-3908#0,False,False,False,khác thuộc tính,So sánh loại vắc-xin và lịch tiêm.
+dense-final,d004,4,test-378,test-378#0,False,False,False,khác thuộc tính,Mô tả phản ứng sau tiêm.
+dense-final,d004,5,train-715,train-715#0,False,False,False,khác thuộc tính,Nêu tuổi và lịch tiêm.
+dense-final,d005,1,train-3105,train-3105#0,False,True,False,khác bệnh cảnh,Đề cập di chứng sau xuất huyết não đã biết.
+dense-final,d005,2,train-61,train-61#0,False,True,False,một phần,Nêu cần khám chuyên khoa để lập kế hoạch điều trị trong bệnh cảnh tương tự.
+dense-final,d005,3,train-4817,train-4817#0,False,True,False,khác bệnh cảnh,Bệnh cảnh tê chân và đi không vững.
+dense-final,d005,4,train-2569,train-2569#0,False,True,False,một phần,"Cần đánh giá tê nửa mặt, không đủ để suy ra điều trị."
+dense-final,d005,5,train-4059,train-4059#0,False,True,False,khác bệnh cảnh,Xử trí di chứng sau đột quỵ đã chẩn đoán.
+dense-final,d006,1,train-1206,train-1206#1,False,False,False,một phần,Đoạn tiếp nối đề cập trẻ thức giấc và quấy về đêm.
+dense-final,d006,2,test-560,test-560#0,False,True,False,một phần,"Đề cập tính thường gặp và quấy khóc kéo dài về đêm, với điều kiện tuổi và thời gian riêng."
+dense-final,d006,3,validation-320,validation-320#0,False,False,False,khác đối tượng,Phần chính nói về giấc ngủ của người mẹ.
+dense-final,d006,4,validation-620,validation-620#0,False,False,False,khác bệnh cảnh,Trẻ có thêm vấn đề về hô hấp trong khi ngủ.
+dense-final,d006,5,train-6348,train-6348#0,False,False,False,một phần,"Có yếu tố môi trường và thói quen, song nguồn gắn với nhóm tuổi cụ thể."
+dense-final,d007,1,train-1842,train-1842#0,False,False,False,khác vị trí,Hạch dưới cằm và vùng cổ.
+dense-final,d007,2,test-283,test-283#0,False,True,False,khác vị trí,"Vùng đáy lưỡi và biểu hiện khi nuốt, chưa xác nhận tổn thương ở phía dưới."
+dense-final,d007,3,validation-976,validation-976#0,True,False,False,trực tiếp,"Gold nêu một số khả năng khi lưỡi sưng đau và cứng, không tự xác nhận một chẩn đoán."
+dense-final,d007,4,test-337,test-337#0,False,False,False,khác vị trí,"Nhiều biểu hiện bề mặt, gai hoặc cuống lưỡi."
+dense-final,d007,5,test-1991,test-1991#1,False,False,False,một phần,"Đoạn nối nói về đánh giá một khối sưng đau, thiếu vị trí và nguyên nhân."
+dense-final,d008,1,test-1972,test-1972#0,False,True,False,cần đối chiếu,"Khuyến nghị mổ rộng, thiếu phân nhánh về nguyên nhân và kích thước."
+dense-final,d008,2,train-4001,train-4001#0,False,False,False,một phần,Nêu khả năng tự lành và theo dõi trong một số ca chấn thương.
+dense-final,d008,3,validation-693,validation-693#0,False,False,False,một phần,Nêu khả năng phẫu thuật và cần đánh giá; không khẳng định mọi trường hợp đều nên mổ.
+dense-final,d008,4,train-4205,train-4205#0,False,True,False,một phần,Nêu khả năng tự lành phụ thuộc đặc điểm tổn thương và cần đánh giá.
+dense-final,d008,5,train-5095,train-5095#0,False,True,False,một phần,Phân biệt tổn thương lớn do chấn thương và yêu cầu đánh giá chuyên khoa.
+locked-final,d000,1,validation-122,validation-122#0,True,True,False,trực tiếp,Phân biệt các mức độ của đúng tình trạng và yêu cầu sàng lọc trước tiêm.
+locked-final,d000,2,train-897,train-897#0,False,False,False,khác bệnh cảnh,Cùng thiếu men nhưng nói về vắc-xin khác và trẻ em.
+locked-final,d000,3,train-1635,train-1635#0,False,False,False,khác bệnh cảnh,Phân loại tiền sử dị ứng kháng sinh trước tiêm.
+locked-final,d000,4,train-6119,train-6119#0,False,False,False,khác bệnh cảnh,Phân loại mức độ dị ứng thuốc trước tiêm.
+locked-final,d000,5,train-6103,train-6103#0,False,False,False,khác bệnh cảnh,Điều kiện trì hoãn hoặc sàng lọc dành cho tiền sử dị ứng.
+locked-final,d001,1,train-5007,train-5007#0,False,False,False,khác xét nghiệm,Giải thích kết quả xét nghiệm tế bào máu.
+locked-final,d001,2,validation-956,validation-956#0,False,False,False,khác xét nghiệm,Đoạn nói về chỉ dấu tuyến tiền liệt.
+locked-final,d001,3,train-6457,train-6457#0,False,True,False,một phần,"Có AMH và khoảng tham khảo chung, phần diễn giải cá nhân bàn về một giá trị thấp."
+locked-final,d001,4,train-521,train-521#0,False,False,False,một phần,"Nêu khác biệt giữa thiết bị, cơ sở và giới hạn khi dùng một chỉ số."
+locked-final,d001,5,train-1450,train-1450#0,False,False,False,một phần,"Liên hệ xét nghiệm với dự trữ buồng trứng, thiếu cơ sở để phân loại kết quả."
+locked-final,d002,1,validation-515,validation-515#0,True,True,False,trực tiếp,Có cả hai cơ chế di truyền và sự khác nhau trong đánh giá thai kỳ sau.
+locked-final,d002,2,train-3342,train-3342#0,False,False,False,không liên quan,Dậy thì sớm ở trẻ.
+locked-final,d002,3,train-4416,train-4416#0,False,False,False,không liên quan,Thời gian lưu trữ phôi và chuyển phôi.
+locked-final,d002,4,test-892,test-892#0,False,True,False,một phần,"Nhắc đột biến mới và sàng lọc, thiếu phân nhánh tiền sử như đáp án tham chiếu."
+locked-final,d002,5,train-5386,train-5386#0,False,False,False,không liên quan,Chăm sóc trẻ sau bú.
+locked-final,d003,1,validation-255,validation-255#0,False,True,False,một phần,"Có chóng mặt khi đổi tư thế cùng đau đầu, thiếu tổ hợp triệu chứng được hỏi."
+locked-final,d003,2,train-5874,train-5874#0,False,True,False,một phần,Nêu chóng mặt khi đổi tư thế trong một bệnh cảnh khác.
+locked-final,d003,3,train-3673,train-3673#0,False,True,False,một phần,Bàn về chóng mặt ngắn khi thay đổi tư thế cùng triệu chứng khác.
+locked-final,d003,4,train-3368,train-3368#0,False,True,False,một phần,"Trường hợp mất thăng bằng và chóng mặt, không giải thích các đau kèm theo."
+locked-final,d003,5,train-750,train-750#0,False,True,False,một phần,Có dấu hiệu khi đổi tư thế nhưng với tập hợp triệu chứng khác.
+locked-final,d004,1,validation-525,validation-525#0,True,True,False,trực tiếp,Mô tả đúng bơm tiêm dùng một lần của sản phẩm.
+locked-final,d004,2,train-715,train-715#0,False,False,False,khác thuộc tính,Nêu tuổi và lịch tiêm.
+locked-final,d004,3,test-378,test-378#0,False,False,False,khác thuộc tính,Mô tả phản ứng sau tiêm.
+locked-final,d004,4,train-3908,train-3908#0,False,False,False,khác thuộc tính,So sánh loại vắc-xin và lịch tiêm.
+locked-final,d004,5,train-2379,train-2379#0,False,False,False,khác thuộc tính,"Giới thiệu vắc-xin, bệnh đích và lịch tiêm."
+locked-final,d005,1,train-61,train-61#0,False,True,False,một phần,Nêu cần khám chuyên khoa để lập kế hoạch điều trị trong bệnh cảnh tương tự.
+locked-final,d005,2,validation-663,validation-663#0,True,False,False,một phần,"Gold có lý do cần đánh giá để tìm nguyên nhân, kèm tiền sử không xuất hiện trong câu hỏi rút gọn."
+locked-final,d005,3,train-4504,train-4504#0,False,False,False,khác bệnh cảnh,Nêu đau nửa đầu trong một trường hợp khác.
+locked-final,d005,4,train-3105,train-3105#0,False,False,False,khác bệnh cảnh,Đề cập di chứng sau xuất huyết não đã biết.
+locked-final,d005,5,test-1120,test-1120#0,False,False,False,khác bệnh cảnh,Đoạn dành cho người đau nửa đầu có bệnh cảnh khác.
+locked-final,d006,1,train-1206,train-1206#1,False,False,False,một phần,Đoạn tiếp nối đề cập trẻ thức giấc và quấy về đêm.
+locked-final,d006,2,validation-620,validation-620#0,False,False,False,khác bệnh cảnh,Trẻ có thêm vấn đề về hô hấp trong khi ngủ.
+locked-final,d006,3,test-560,test-560#0,False,True,False,một phần,"Đề cập tính thường gặp và quấy khóc kéo dài về đêm, với điều kiện tuổi và thời gian riêng."
+locked-final,d006,4,validation-320,validation-320#0,False,False,False,khác đối tượng,Phần chính nói về giấc ngủ của người mẹ.
+locked-final,d006,5,train-79,train-79#0,False,False,False,một phần,Nêu đói hoặc môi trường như một số hoàn cảnh ở trẻ sơ sinh.
+locked-final,d007,1,test-283,test-283#0,False,True,False,khác vị trí,"Vùng đáy lưỡi và biểu hiện khi nuốt, chưa xác nhận tổn thương ở phía dưới."
+locked-final,d007,2,validation-703,validation-703#0,False,False,False,khác vị trí,Bề mặt hoặc bờ lưỡi.
+locked-final,d007,3,train-865,train-865#0,False,False,False,một phần,Cùng vùng dưới lưỡi nhưng khả năng nêu ra phụ thuộc điều kiện không đau.
+locked-final,d007,4,test-337,test-337#0,False,False,False,khác vị trí,"Nhiều biểu hiện bề mặt, gai hoặc cuống lưỡi."
+locked-final,d007,5,train-5013,train-5013#1,False,False,False,khác vị trí,Đề cập sưng hạch ở vùng khác.
+locked-final,d008,1,test-1972,test-1972#0,False,True,False,cần đối chiếu,"Khuyến nghị mổ rộng, thiếu phân nhánh về nguyên nhân và kích thước."
+locked-final,d008,2,validation-693,validation-693#0,False,True,False,một phần,Nêu khả năng phẫu thuật và cần đánh giá; không khẳng định mọi trường hợp đều nên mổ.
+locked-final,d008,3,train-5095,train-5095#0,False,True,False,một phần,Phân biệt tổn thương lớn do chấn thương và yêu cầu đánh giá chuyên khoa.
+locked-final,d008,4,train-4001,train-4001#0,False,True,False,một phần,Nêu khả năng tự lành và theo dõi trong một số ca chấn thương.
+locked-final,d008,5,train-4205,train-4205#0,False,False,False,một phần,Nêu khả năng tự lành phụ thuộc đặc điểm tổn thương và cần đánh giá.
+selected-final,d000,1,validation-122,validation-122#0,True,True,False,trực tiếp,Phân biệt các mức độ của đúng tình trạng và yêu cầu sàng lọc trước tiêm.
+selected-final,d000,2,train-897,train-897#0,False,False,False,khác bệnh cảnh,Cùng thiếu men nhưng nói về vắc-xin khác và trẻ em.
+selected-final,d000,3,train-1635,train-1635#0,False,False,False,khác bệnh cảnh,Phân loại tiền sử dị ứng kháng sinh trước tiêm.
+selected-final,d000,4,train-6119,train-6119#0,False,False,False,khác bệnh cảnh,Phân loại mức độ dị ứng thuốc trước tiêm.
+selected-final,d000,5,train-6103,train-6103#0,False,False,False,khác bệnh cảnh,Điều kiện trì hoãn hoặc sàng lọc dành cho tiền sử dị ứng.
+selected-final,d001,1,train-5007,train-5007#0,False,False,False,khác xét nghiệm,Giải thích kết quả xét nghiệm tế bào máu.
+selected-final,d001,2,validation-956,validation-956#0,False,False,False,khác xét nghiệm,Đoạn nói về chỉ dấu tuyến tiền liệt.
+selected-final,d001,3,train-6457,train-6457#0,False,True,False,một phần,"Có AMH và khoảng tham khảo chung, phần diễn giải cá nhân bàn về một giá trị thấp."
+selected-final,d001,4,train-521,train-521#0,False,False,False,một phần,"Nêu khác biệt giữa thiết bị, cơ sở và giới hạn khi dùng một chỉ số."
+selected-final,d001,5,train-1450,train-1450#0,False,False,False,một phần,"Liên hệ xét nghiệm với dự trữ buồng trứng, thiếu cơ sở để phân loại kết quả."
+selected-final,d002,1,validation-515,validation-515#0,True,True,False,trực tiếp,Có cả hai cơ chế di truyền và sự khác nhau trong đánh giá thai kỳ sau.
+selected-final,d002,2,train-3342,train-3342#0,False,False,False,không liên quan,Dậy thì sớm ở trẻ.
+selected-final,d002,3,train-4416,train-4416#0,False,False,False,không liên quan,Thời gian lưu trữ phôi và chuyển phôi.
+selected-final,d002,4,test-892,test-892#0,False,True,False,một phần,"Nhắc đột biến mới và sàng lọc, thiếu phân nhánh tiền sử như đáp án tham chiếu."
+selected-final,d002,5,train-5386,train-5386#0,False,False,False,không liên quan,Chăm sóc trẻ sau bú.
+selected-final,d003,1,validation-255,validation-255#0,False,True,False,một phần,"Có chóng mặt khi đổi tư thế cùng đau đầu, thiếu tổ hợp triệu chứng được hỏi."
+selected-final,d003,2,train-5874,train-5874#0,False,True,False,một phần,Nêu chóng mặt khi đổi tư thế trong một bệnh cảnh khác.
+selected-final,d003,3,train-3673,train-3673#0,False,True,False,một phần,Bàn về chóng mặt ngắn khi thay đổi tư thế cùng triệu chứng khác.
+selected-final,d003,4,train-3368,train-3368#0,False,True,False,một phần,"Trường hợp mất thăng bằng và chóng mặt, không giải thích các đau kèm theo."
+selected-final,d003,5,train-750,train-750#0,False,True,False,một phần,Có dấu hiệu khi đổi tư thế nhưng với tập hợp triệu chứng khác.
+selected-final,d004,1,validation-525,validation-525#0,True,True,False,trực tiếp,Mô tả đúng bơm tiêm dùng một lần của sản phẩm.
+selected-final,d004,2,train-715,train-715#0,False,False,False,khác thuộc tính,Nêu tuổi và lịch tiêm.
+selected-final,d004,3,test-378,test-378#0,False,False,False,khác thuộc tính,Mô tả phản ứng sau tiêm.
+selected-final,d004,4,train-3908,train-3908#0,False,False,False,khác thuộc tính,So sánh loại vắc-xin và lịch tiêm.
+selected-final,d004,5,train-2379,train-2379#0,False,False,False,khác thuộc tính,"Giới thiệu vắc-xin, bệnh đích và lịch tiêm."
+selected-final,d005,1,train-61,train-61#0,False,True,False,một phần,Nêu cần khám chuyên khoa để lập kế hoạch điều trị trong bệnh cảnh tương tự.
+selected-final,d005,2,validation-663,validation-663#0,True,False,False,một phần,"Gold có lý do cần đánh giá để tìm nguyên nhân, kèm tiền sử không xuất hiện trong câu hỏi rút gọn."
+selected-final,d005,3,train-4504,train-4504#0,False,False,False,khác bệnh cảnh,Nêu đau nửa đầu trong một trường hợp khác.
+selected-final,d005,4,train-3105,train-3105#0,False,False,False,khác bệnh cảnh,Đề cập di chứng sau xuất huyết não đã biết.
+selected-final,d005,5,test-1120,test-1120#0,False,False,False,khác bệnh cảnh,Đoạn dành cho người đau nửa đầu có bệnh cảnh khác.
+selected-final,d006,1,train-1206,train-1206#1,False,False,False,một phần,Đoạn tiếp nối đề cập trẻ thức giấc và quấy về đêm.
+selected-final,d006,2,validation-620,validation-620#0,False,False,False,khác bệnh cảnh,Trẻ có thêm vấn đề về hô hấp trong khi ngủ.
+selected-final,d006,3,test-560,test-560#0,False,True,False,một phần,"Đề cập tính thường gặp và quấy khóc kéo dài về đêm, với điều kiện tuổi và thời gian riêng."
+selected-final,d006,4,validation-320,validation-320#0,False,False,False,khác đối tượng,Phần chính nói về giấc ngủ của người mẹ.
+selected-final,d006,5,train-79,train-79#0,False,False,False,một phần,Nêu đói hoặc môi trường như một số hoàn cảnh ở trẻ sơ sinh.
+selected-final,d007,1,test-283,test-283#0,False,True,False,khác vị trí,"Vùng đáy lưỡi và biểu hiện khi nuốt, chưa xác nhận tổn thương ở phía dưới."
+selected-final,d007,2,validation-703,validation-703#0,False,False,False,khác vị trí,Bề mặt hoặc bờ lưỡi.
+selected-final,d007,3,train-865,train-865#0,False,False,False,một phần,Cùng vùng dưới lưỡi nhưng khả năng nêu ra phụ thuộc điều kiện không đau.
+selected-final,d007,4,test-337,test-337#0,False,False,False,khác vị trí,"Nhiều biểu hiện bề mặt, gai hoặc cuống lưỡi."
+selected-final,d007,5,train-5013,train-5013#1,False,False,False,khác vị trí,Đề cập sưng hạch ở vùng khác.
+selected-final,d008,1,test-1972,test-1972#0,False,True,False,cần đối chiếu,"Khuyến nghị mổ rộng, thiếu phân nhánh về nguyên nhân và kích thước."
+selected-final,d008,2,validation-693,validation-693#0,False,True,False,một phần,Nêu khả năng phẫu thuật và cần đánh giá; không khẳng định mọi trường hợp đều nên mổ.
+selected-final,d008,3,train-5095,train-5095#0,False,True,False,một phần,Phân biệt tổn thương lớn do chấn thương và yêu cầu đánh giá chuyên khoa.
+selected-final,d008,4,train-4001,train-4001#0,False,True,False,một phần,Nêu khả năng tự lành và theo dõi trong một số ca chấn thương.
+selected-final,d008,5,train-4205,train-4205#0,False,False,False,một phần,Nêu khả năng tự lành phụ thuộc đặc điểm tổn thương và cần đánh giá.
