@@ -2,7 +2,7 @@
 
 **[Mở demo có sẵn câu trả lời và nguồn](https://colab.research.google.com/github/Vdbinh05/ViCare-AI-Challenge/blob/ffbc841b5ce371c104b7d6ab4bb16d3c7c8f40f8/ViCare_Linux_CPU_Executed.ipynb#scrollTo=interactive-question)** · **[Chạy notebook trên Google Colab](https://colab.research.google.com/github/Vdbinh05/ViCare-AI-Challenge/blob/ffbc841b5ce371c104b7d6ab4bb16d3c7c8f40f8/ViCare_Vuong_Dinh_Binh.ipynb)**
 
-Bài dự thi AI Challenge 24h của Vương Đình Bình. ViCare tìm tài liệu sức khỏe tiếng Việt trong ViHealthQA, kiểm tra bằng chứng và hiển thị đoạn nguồn. Người xem có thể mở demo ngay để đọc câu trả lời, nguồn trích và các lượt từ chối. [Bốn ảnh minh chứng](media/notebook/) · [Bài đăng dự thi](SUBMISSION.md)
+Bài dự thi AI Challenge 24h của Vương Đình Bình. ViCare tìm tài liệu sức khỏe tiếng Việt trong ViHealthQA, kiểm tra bằng chứng và hiển thị đoạn nguồn. Người xem có thể mở demo ngay để đọc câu trả lời, nguồn trích và các lượt từ chối. [Ảnh minh chứng để đăng](media/facebook/) · [Bài đăng dự thi](SUBMISSION.md)
 
 ## Chạy notebook
 
