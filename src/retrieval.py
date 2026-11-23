@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 
-from .config import EMBEDDING_MODEL, EMBEDDING_REVISION, INDEX_COMMAND, Settings
+from .config import DEFAULT_HYBRID_BACKEND, EMBEDDING_MODEL, EMBEDDING_REVISION, INDEX_COMMAND, Settings
 from .dataset import Chunk, corpus_sha256, load_vihealthqa, prepare_dataset
 from .embeddings import Embedder
 from .safety import normalize_vietnamese
@@ -75,7 +75,8 @@ class SearchResult:
 
 
 def dense_candidate_count(k):
-    return max(k * 10, 30)
+    # The UI supports 1–10 sources. Slice a single fixed ranking at every cutoff.
+    return max(k * 10, 100)
 
 
 def unique_hits(hits):
@@ -238,35 +239,56 @@ def parse_dense(response):
 
 
 class Retriever:
-    def __init__(self, collection, embedder, chunks, settings):
+    def __init__(self, collection, embedder, chunks, settings, *, hybrid_backend=DEFAULT_HYBRID_BACKEND):
         self.collection = collection
         self.embedder = embedder
         self.chunks = list(chunks)
         self.settings = settings
         self.indexed_doc_ids = {chunk.doc_id for chunk in self.chunks}
         self.sparse = SparseIndex(self.chunks)
+        self.hybrid_backend = hybrid_backend
+        if hybrid_backend == "exact":
+            from .exact_search import ExactCosine
+            self.exact = ExactCosine(collection, self.chunks)
+        elif hybrid_backend != "locked":
+            raise ValueError("Unknown Hybrid retrieval backend")
 
-    def search(self, question, method, k):
+    def search(self, question, method, k, *, trace=None):
         if not isinstance(method, str) or method not in {"Dense", "Hybrid"} or type(k) is not int or k < 1:
             raise ValueError("Phương pháp hoặc số nguồn truy xuất không hợp lệ.")
         if not isinstance(question, str) or not question.strip() or not self.chunks:
             return SearchResult([], None, method)
         question = strip_query_greetings(question.strip())
-        pool = self.settings.candidate_pool
-        depth = dense_candidate_count(k) if method == "Dense" else max(pool, self.settings.hybrid_dense_depth)
-        dense = parse_dense(self.collection.query(
-            query_embeddings=self.embedder.query(question),
-            n_results=min(len(self.chunks), depth),
+        vector = self.embedder.query(question)
+        return self.search_encoded(question, vector, method, k, trace=trace)
+
+    def dense_search(self, vector, depth):
+        return parse_dense(self.collection.query(
+            query_embeddings=vector, n_results=min(len(self.chunks), depth),
             include=["documents", "metadatas", "distances"],
         ))
+
+    def search_encoded(self, question, vector, method, k, *, trace=None, dense_search=None):
+        """Rank a cleaned query. A paired evaluator can supply the same encoded vector to both searches."""
+        pool = self.settings.candidate_pool
+        depth = dense_candidate_count(k) if method == "Dense" else max(pool, self.settings.hybrid_dense_depth)
+        if dense_search is None:
+            dense_search = (self.exact.search if method == "Hybrid" and self.hybrid_backend == "exact"
+                            else self.dense_search)
+        dense = dense_search(vector, depth)
         top_score = max((hit.score for hit in dense), default=None)
         if method == "Dense":
-            return SearchResult(unique_hits(dense)[:k], top_score, method)
+            hits = unique_hits(dense)
+            if trace is not None:
+                trace.update(dense=dense, sparse=[], fused=hits)
+            return SearchResult(hits[:k], top_score, method)
         dense = sorted(dense, key=lambda hit: (-hit.score, hit.chunk.chunk_id))[:pool]
         sparse = self.sparse.search(question, pool)
-        hits = fuse(dense, sparse, k=k, rrf_k=self.settings.rrf_k,
+        hits = fuse(dense, sparse, k=2 * pool, rrf_k=self.settings.rrf_k,
                     dense_weight=self.settings.dense_weight, sparse_weight=self.settings.sparse_weight)
-        return SearchResult(hits, top_score, method)
+        if trace is not None:
+            trace.update(dense=dense, sparse=sparse, fused=hits)
+        return SearchResult(hits[:k], top_score, method)
 
 
 def write_manifest(path, manifest):
@@ -322,7 +344,7 @@ def build_index(settings, chunks, embedder=None):
     return manifest
 
 
-def open_retriever(settings, *, expected_signature=None, embedder=None):
+def open_retriever(settings, *, expected_signature=None, embedder=None, hybrid_backend=DEFAULT_HYBRID_BACKEND):
     manifest_path = settings.index_dir / MANIFEST
     if not manifest_path.is_file():
         raise MissingIndex()
@@ -360,7 +382,7 @@ def open_retriever(settings, *, expected_signature=None, embedder=None):
             chunks.append(chunk)
     if len({chunk.chunk_id for chunk in chunks}) != manifest["count"]:
         raise MissingIndex()
-    return Retriever(collection, embedder or Embedder(), chunks, settings)
+    return Retriever(collection, embedder or Embedder(), chunks, settings, hybrid_backend=hybrid_backend)
 
 
 def main():

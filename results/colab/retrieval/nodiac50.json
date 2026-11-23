@@ -1,0 +1,179 @@
+{
+  "set": "nodiac50",
+  "created_utc": "2026-11-23T01:46:15.085431+00:00",
+  "metrics": {
+    "locked": {
+      "n": 50,
+      "errors": 0,
+      "coverage": 1.0,
+      "candidate_union_coverage": 0.7,
+      "candidate50_document_coverage": 0.62,
+      "recall": {
+        "@1": 0.18,
+        "@3": 0.4,
+        "@5": 0.44,
+        "@10": 0.48
+      },
+      "hit_counts": {
+        "dense_rank": {
+          "@1": 1,
+          "@3": 2,
+          "@5": 2,
+          "@10": 3,
+          "@20": 3,
+          "@50": 4
+        },
+        "bm25_rank": {
+          "@1": 16,
+          "@3": 21,
+          "@5": 24,
+          "@10": 27,
+          "@20": 30,
+          "@50": 34
+        },
+        "rrf_rank": {
+          "@1": 9,
+          "@3": 20,
+          "@5": 22,
+          "@10": 24,
+          "@20": 28,
+          "@50": 31
+        },
+        "rank": {
+          "@1": 9,
+          "@3": 20,
+          "@5": 22,
+          "@10": 24,
+          "@20": 28,
+          "@50": 31
+        }
+      },
+      "error_groups_at_5": {
+        "outside_union": 15,
+        "inside_50_outside_5": 9,
+        "gold_at_5": 22,
+        "removed_before_50": 4
+      },
+      "mean_dense_duplicate_chunks": 1.5,
+      "mean_candidate50_documents": 50,
+      "mean_candidate50_chunks": 62.6,
+      "latency_ms": {
+        "mean": 121.274,
+        "median": 88.4,
+        "p95": 294.05
+      },
+      "peak_process_rss_mib": 1382.0
+    },
+    "exact": {
+      "n": 50,
+      "errors": 0,
+      "coverage": 1.0,
+      "candidate_union_coverage": 0.7,
+      "candidate50_document_coverage": 0.62,
+      "recall": {
+        "@1": 0.16,
+        "@3": 0.4,
+        "@5": 0.44,
+        "@10": 0.48
+      },
+      "hit_counts": {
+        "dense_rank": {
+          "@1": 1,
+          "@3": 2,
+          "@5": 2,
+          "@10": 3,
+          "@20": 3,
+          "@50": 4
+        },
+        "bm25_rank": {
+          "@1": 16,
+          "@3": 21,
+          "@5": 24,
+          "@10": 27,
+          "@20": 30,
+          "@50": 34
+        },
+        "rrf_rank": {
+          "@1": 8,
+          "@3": 20,
+          "@5": 22,
+          "@10": 24,
+          "@20": 28,
+          "@50": 31
+        },
+        "rank": {
+          "@1": 8,
+          "@3": 20,
+          "@5": 22,
+          "@10": 24,
+          "@20": 28,
+          "@50": 31
+        }
+      },
+      "error_groups_at_5": {
+        "outside_union": 15,
+        "inside_50_outside_5": 9,
+        "gold_at_5": 22,
+        "removed_before_50": 4
+      },
+      "mean_dense_duplicate_chunks": 1.32,
+      "mean_candidate50_documents": 50,
+      "mean_candidate50_chunks": 62.58,
+      "latency_ms": {
+        "mean": 114.114,
+        "median": 86.234,
+        "p95": 297.231
+      },
+      "peak_process_rss_mib": 1382.0
+    }
+  },
+  "aliases_same_invocation": {},
+  "metadata": {
+    "platform": "Windows-10-10.0.26300-SP0",
+    "python": "3.11.0",
+    "packages": {
+      "chromadb": "1.0.20",
+      "sentence-transformers": "3.4.1",
+      "torch": "2.7.1",
+      "numpy": "1.26.4"
+    },
+    "e5": "intfloat/multilingual-e5-small",
+    "e5_revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "e5_device": "cpu",
+    "torch_threads": 4,
+    "openblas_threads_env": "1",
+    "dataset_revision": "d90a62deedfc822a15de3f35535bb41474e4d3f4",
+    "corpus_sha256": "35902972d43e0841495d6f920901c99146d08e7e745cb5670c76d3d9f367ea87",
+    "documents": 9895,
+    "chunks": 11227,
+    "mapping_errors": 0,
+    "index_load_and_validation_seconds": 13.14,
+    "candidate_units": "Dense standalone HNSW100 chunks; Hybrid HNSW200 -> sorted 80 chunks, BM25 80 documents, RRF 40 equal weights. Candidate50 = first 50 distinct documents from this ranking and every indexed passage of those documents.",
+    "exact_load_seconds": 0.247,
+    "exact_matrix_mib": 16.446,
+    "stored_vector_max_norm_error": 1.1920928955078125e-07,
+    "passage_tokens": {
+      "n": 11227,
+      "effective_limit": 512,
+      "includes_prefix_and_special_tokens": true,
+      "min": 12,
+      "p50": 110.0,
+      "p95": 254.0,
+      "max": 384,
+      "clipped": 0,
+      "fraction_clipped": 0.0
+    },
+    "expected_count": 50,
+    "query_tokens": {
+      "n": 50,
+      "effective_limit": 512,
+      "includes_prefix_and_special_tokens": true,
+      "min": 15,
+      "p50": 25.5,
+      "p95": 93.64999999999993,
+      "max": 134,
+      "clipped": 0,
+      "fraction_clipped": 0.0
+    }
+  }
+}

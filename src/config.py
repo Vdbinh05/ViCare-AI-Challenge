@@ -9,6 +9,7 @@ DATASET = "tarudesu/ViHealthQA"
 DATASET_REVISION = "d90a62deedfc822a15de3f35535bb41474e4d3f4"
 EMBEDDING_MODEL = "intfloat/multilingual-e5-small"
 EMBEDDING_REVISION = "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+DEFAULT_HYBRID_BACKEND = "exact"
 CHUNK_SIZE = 200
 OVERLAP = 40
 INDEX_COMMAND = "python -m src.retrieval build"

@@ -1,0 +1,27 @@
+{
+  "selected": "exact",
+  "locked_at_utc": "2026-11-23T01:55:09.638078+00:00",
+  "ineligible_reasons": {
+    "exact": [],
+    "rerank": [
+      "train200 gain < 2 hits at 5",
+      "nodiac50 loss > 1 hit at 5"
+    ]
+  },
+  "selection_sets": [
+    "train200",
+    "nodiac50"
+  ],
+  "current_study_evaluated_before_lock": [
+    "train200",
+    "nodiac50"
+  ],
+  "historically_examined": [
+    "train200",
+    "nodiac50",
+    "dev100",
+    "previous_confirm100"
+  ],
+  "sets_sha256": "04f94354cc188f190244daa056a64a7eba165050336535b24d2b77e51ffcac4d",
+  "hash_encoding": "UTF-8, LF line endings"
+}

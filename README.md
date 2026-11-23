@@ -8,7 +8,7 @@ ViCare là demo tra cứu kiến thức sức khỏe tiếng Việt của Vươn
 
 Kho tra cứu gồm 9.895 tài liệu từ cột đáp án của ViHealthQA sau khi khử trùng, chia thành 11.227 đoạn, mỗi đoạn tối đa 200 từ và chồng lấn 40 từ. E5 mã hóa đoạn với tiền tố `passage:` và câu hỏi với `query:`. Chroma lưu vector chuẩn hóa 384 chiều. Câu hỏi và nhãn gold của bộ đánh giá không tham gia lập chỉ mục.
 
-- **Dense** dùng tìm kiếm vector. **Hybrid** bổ sung BM25 ở cấp tài liệu, xử lý cụm hai từ và tìm kiếm bỏ dấu khi câu hỏi không có dấu. HNSW lấy 200 đoạn, sắp theo cosine rồi ID đoạn và giữ 80 đoạn. BM25 lấy 80 tài liệu. Sau khử trùng theo document ID, RRF hợp nhất hai thứ hạng với k=40 và trọng số 0,5 mỗi nhánh.
+- **Dense** dùng tìm kiếm vector. **Hybrid** bổ sung BM25 ở cấp tài liệu, xử lý cụm hai từ và tìm kiếm bỏ dấu khi câu hỏi không có dấu. Dense dùng 100 đoạn HNSW ở cả top 5 và top 10. Nhánh ngữ nghĩa của Hybrid tính cosine chính xác trên ma trận E5 hiện có, lấy 200 đoạn rồi giữ 80 theo cosine và ID đoạn. BM25 lấy 80 tài liệu. Sau khử trùng theo document ID, RRF hợp nhất hai thứ hạng với k=40 và trọng số 0,5 mỗi nhánh.
 - Các nhánh cấp cứu và yêu cầu liều dùng cá nhân trả về sớm. Với câu hỏi còn lại, cổng truy xuất dùng cosine Dense tối thiểu 0,86. Đây là ngưỡng minh họa chưa được hiệu chỉnh lâm sàng.
 - Ollama kiểm tra liệu nguồn có trả lời **đúng đối tượng, bệnh cảnh và mối quan hệ được hỏi**. ViCare chọn một câu nguyên văn trong nguồn được duyệt, đối chiếu phạm vi và kiểm tra số trích dẫn trước khi hiển thị. Nếu không đủ bằng chứng, ViCare có thể từ chối. Khi Ollama lỗi sau truy xuất, người dùng vẫn đọc được các đoạn đã tìm thấy.
 
@@ -63,23 +63,25 @@ Mở URL in cạnh PID của phiên mới. ViCare chọn một cổng loopback t
 | Thủ đô của nước Úc là gì? | Từ chối với lý do ngoài phạm vi sức khỏe. |
 | Thuốc giả định ZYX-9000 có chữa khỏi mọi bệnh mạn tính không? | Từ chối do thiếu bằng chứng. |
 
-## Kết quả trên bộ dev
+## Mốc Windows trước đợt thử nghiệm cosine chính xác
 
 | Truy xuất trên cùng 100 câu | Recall@1 | Recall@3 | Recall@5 | Recall@10 | Gold có trong chỉ mục |
 |---|---:|---:|---:|---:|---:|
 | Dense | 37% | 47% | 51% | 55% | 100% |
-| Hybrid bản nộp | 38% | 52% | 55% | 60% | 100% |
+| Hybrid HNSW đã khóa | 38% | 52% | 55% | 60% | 100% |
 
 Ở top 5, Hybrid tìm thêm tài liệu chuẩn ở 6 câu và mất ở 2 câu. Trên 10 câu đầu chạy toàn bộ ứng dụng, có 1 câu được trả lời với trích dẫn, 8 câu bị từ chối và 1 câu chuyển sang hướng dẫn cấp cứu. Judge của notebook chạy bằng Qwen cho 9/10, gồm cả 7 lượt từ chối được chấm 1. Có 0 điểm judge không hợp lệ và 0 lỗi kỹ thuật. Dev100 đã được dùng phân tích lỗi. [Bảng từng câu và giới hạn của phép chấm](results/submission/generation-review.md)
 
-Sau khi tạo chỉ mục và chuẩn bị Ollama, chạy từ thư mục dự án:
+Cấu hình mới được chọn trên Train200 và NoDiac50 trước khi đánh giá Dev100. [Quy tắc chọn](results/colab/retrieval/protocol.md) · [Quyết định đã khóa](results/colab/retrieval/selection.json)
+
+Sau khi tạo chỉ mục và chuẩn bị Ollama, đo lại từ thư mục dự án.
 
 ~~~powershell
-.\.venv\Scripts\python.exe -X utf8 -m src.evaluation --output .private/retrieval-rerun
-.\.venv\Scripts\python.exe -X utf8 -m benchmarks.evaluate_generation
+.\.venv\Scripts\python.exe -X utf8 -m benchmarks.retrieval_study final --output .private/retrieval-rerun
+.\.venv\Scripts\python.exe -X utf8 -m benchmarks.evaluate_generation --method Hybrid --output .private/generation-rerun/final.json
 ~~~
 
-Lệnh thứ hai ghi lại kết quả lần chạy vào `results/submission/generation.json` và bản đầy đủ chứa văn bản ViHealthQA vào `.private/generation/dev10.json`. Xem lệnh kiểm thử và các điều kiện đo trong [báo cáo](results/submission/REPORT.md).
+Lệnh thứ hai ghi JSON và CSV rút gọn cạnh nhau. Tùy chọn `--save-review-inputs` dành cho đối chiếu nội bộ, lưu riêng văn bản vào `.private/`. Xem lệnh kiểm thử và các điều kiện đo trong [báo cáo](results/submission/REPORT.md).
 
 ![Câu trả lời và thẻ nguồn trong giao diện ViCare](media/02-answer-with-source.png)
 

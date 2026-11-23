@@ -90,11 +90,16 @@ def test_retrieval_modes_keep_distinct_candidate_pools_and_cosine_score():
         return [[1.0, 0.0]]
 
     collection = SimpleNamespace(count=lambda: 200, query=collection_query)
-    retriever = Retriever(collection, SimpleNamespace(query=embed), chunks, Settings())
+    retriever = Retriever(collection, SimpleNamespace(query=embed), chunks, Settings(), hybrid_backend="locked")
     dense = retriever.search("HBsAg", "Dense", 10)
     hybrid = retriever.search("HBsAg", "Hybrid", 10)
-    assert candidate_counts == [100, 200]
-    assert embedded_questions == ["HBsAg", "HBsAg"]
+    for method, benchmark in (("Dense", dense), ("Hybrid", hybrid)):
+        trace = {}
+        demo = retriever.search("HBsAg", method, 5, trace=trace)
+        assert demo.hits == benchmark.hits[:5]
+        assert trace["fused"][:5] == demo.hits
+    assert candidate_counts == [100, 200, 100, 200]
+    assert embedded_questions == ["HBsAg"] * 4
     assert dense.top_dense_score == hybrid.top_dense_score == pytest.approx(0.94)
     assert dense.hits[0].score == pytest.approx(0.94)
     assert hybrid.hits[0].score == pytest.approx(1 / (Settings().rrf_k + 1))
@@ -109,7 +114,8 @@ def test_hybrid_truncates_sorted_chunks_before_document_fusion():
                 "metadatas": [[{"doc_id": c.doc_id} for c in chunks]], "distances": [[0.3, 0.1, 0.1]]}
 
     settings = Settings(candidate_pool=2, top_k=2, hybrid_dense_depth=3)
-    retriever = Retriever(SimpleNamespace(query=query), SimpleNamespace(query=lambda q: [[1.0]]), chunks, settings)
+    retriever = Retriever(SimpleNamespace(query=query), SimpleNamespace(query=lambda q: [[1.0]]), chunks, settings,
+                          hybrid_backend="locked")
     result = retriever.search("unmatchedsynthetictoken", "Hybrid", 2)
     assert [h.chunk.chunk_id for h in result.hits] == ["best#0"]
 
@@ -118,6 +124,39 @@ def test_unique_hits_keeps_first_chunk_and_input_rank():
     first = hit("b", 1, 0.92)
     other = hit("a", 0, 0.91)
     assert list(unique_hits([first, hit("b", 2, 0.90), other])) == [first, other]
+
+
+def test_exact_cosine_matches_vector_ids_and_uses_chunk_id_to_break_ties():
+    from src.exact_search import ExactCosine
+
+    chunks = [hit("a").chunk, hit("b").chunk, hit("c").chunk]
+    data = {"ids": [chunks[i].chunk_id for i in (1, 2, 0)],
+            "embeddings": [[1., 0.], [-1., 0.], [1., 0.]]}
+    exact = ExactCosine(SimpleNamespace(get=lambda **kwargs: data), chunks)
+    ranked = exact.search([[1., 0.]], 2)
+    assert [h.chunk.doc_id for h in ranked] == ["a", "b"]
+    assert [h.score for h in ranked] == pytest.approx([1., 1.])
+
+
+def test_reranker_scores_all_passages_of_each_candidate_and_keeps_winning_passage():
+    import torch
+    from benchmarks.passage_reranker import PassageReranker
+
+    scorer = PassageReranker.__new__(PassageReranker)
+    scorer.torch = torch
+    scorer.by_doc = {"a": [hit("a", 0, text="1").chunk],
+                     "b": [hit("b", 0, text="0").chunk, hit("b", 1, text="9").chunk]}
+    pairs = []
+
+    def tokenize(questions, passages, **options):
+        pairs.extend(zip(questions, passages))
+        return {"values": torch.tensor([[float(p)] for p in passages])}
+
+    scorer.tokenizer = tokenize
+    scorer.model = lambda values: SimpleNamespace(logits=values)
+    ranking = scorer.rank("query", ["a", "b"])
+    assert [h.chunk.chunk_id for h in ranking] == ["b#1", "a#0"]
+    assert sorted(pairs) == [("query", "0"), ("query", "1"), ("query", "9")]
 
 
 def test_rrf_uses_unique_document_ranks_and_handles_missing_branches():
@@ -181,12 +220,16 @@ def test_integration_real_chroma_and_real_bm25_with_fixed_test_vectors(tmp_path)
                                query=lambda question: [[1.0, 0.0]])
     manifest = build_index(settings, chunks, embedder)
     assert build_index(settings, chunks, embedder) == manifest
-    retriever = open_retriever(settings, expected_signature=manifest["corpus_sha256"], embedder=embedder)
+    retriever = open_retriever(settings, expected_signature=manifest["corpus_sha256"], embedder=embedder,
+                               hybrid_backend="exact")
     dense = retriever.search("HBsAg", "Dense", 1)
     hybrid = retriever.search("HBsAg", "Hybrid", 2)
     assert {chunk.chunk_id for chunk in retriever.chunks} == {chunk.chunk_id for chunk in chunks}
     assert dense.top_dense_score == pytest.approx(1.0)
     assert dense.hits[0].chunk == hybrid.hits[0].chunk == chunks[0]
+    deployed = open_retriever(settings, expected_signature=manifest["corpus_sha256"], embedder=embedder)
+    assert deployed.hybrid_backend == "exact"
+    assert deployed.search("HBsAg", "Hybrid", 2).hits == hybrid.hits
 
 
 @pytest.mark.skipif(os.getenv("VICARE_QA_REAL_INDEX") != "1", reason="Cần ViHealthQA, E5 và chỉ mục đầy đủ")

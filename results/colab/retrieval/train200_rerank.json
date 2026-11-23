@@ -1,0 +1,85 @@
+{
+  "set": "train200_rerank",
+  "created_utc": "2026-11-23T01:53:31.515567+00:00",
+  "metrics": {
+    "rerank": {
+      "n": 200,
+      "errors": 0,
+      "coverage": 1.0,
+      "candidate_union_coverage": 0.82,
+      "candidate50_document_coverage": 0.775,
+      "recall": {
+        "@1": 0.435,
+        "@3": 0.535,
+        "@5": 0.595,
+        "@10": 0.65
+      },
+      "hit_counts": {
+        "dense_rank": {
+          "@1": 80,
+          "@3": 101,
+          "@5": 112,
+          "@10": 119,
+          "@20": 133,
+          "@50": 145
+        },
+        "bm25_rank": {
+          "@1": 72,
+          "@3": 94,
+          "@5": 107,
+          "@10": 122,
+          "@20": 135,
+          "@50": 143
+        },
+        "rrf_rank": {
+          "@1": 81,
+          "@3": 108,
+          "@5": 123,
+          "@10": 132,
+          "@20": 142,
+          "@50": 155
+        },
+        "rank": {
+          "@1": 87,
+          "@3": 107,
+          "@5": 119,
+          "@10": 130,
+          "@20": 138,
+          "@50": 155
+        }
+      },
+      "error_groups_at_5": {
+        "outside_union": 36,
+        "gold_at_5": 119,
+        "inside_50_outside_5": 36,
+        "removed_before_50": 9
+      },
+      "mean_dense_duplicate_chunks": 4.355,
+      "mean_candidate50_documents": 50,
+      "mean_candidate50_chunks": 65.02,
+      "latency_ms": {
+        "mean": 2176.81,
+        "median": 1994.832,
+        "p95": 3734.046
+      },
+      "peak_process_rss_mib": 941.6
+    }
+  },
+  "aliases_same_invocation": {},
+  "metadata": {
+    "dataset_revision": "d90a62deedfc822a15de3f35535bb41474e4d3f4",
+    "corpus_sha256": "35902972d43e0841495d6f920901c99146d08e7e745cb5670c76d3d9f367ea87",
+    "reranker": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+    "revision": "1427fd652930e4ba29e8149678df786c240d8825",
+    "device": "cpu",
+    "dtype": "float32",
+    "max_pair_tokens": 384,
+    "batch_size": 8,
+    "activation": "raw logits",
+    "torch_threads": 4,
+    "torch_version": "2.7.1+cpu",
+    "setup_seconds": 6.113,
+    "latency_protocol": "paired locked full retrieval latency plus wall time of all CE passage batches, excluding evaluator and disk IO; final deployment is timed separately.",
+    "expected_count": 200
+  }
+}

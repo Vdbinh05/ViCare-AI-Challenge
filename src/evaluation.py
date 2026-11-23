@@ -101,6 +101,8 @@ def table(report):
     dense_pool = report["settings"]["dense"]["candidate_pool_at_eval_k"]
     hybrid_pool = report["settings"]["hybrid"]["candidate_pool_per_branch"]
     hybrid_depth = report["settings"]["hybrid"].get("dense_query_depth", hybrid_pool)
+    hybrid_backend = report["settings"]["hybrid"].get("backend", "locked")
+    dense_stage = "cosine chính xác" if hybrid_backend == "exact" else "HNSW"
     lines = [
         "# So sánh truy xuất Dense và Hybrid", "", "Trạng thái **COMPLETED**.", "",
         "| Chỉ số | Dense | Hybrid | Hybrid − Dense |",
@@ -115,7 +117,7 @@ def table(report):
         lines.append(f"| {label} (ms) | {a:.2f} | {b:.2f} | {b - a:+.2f} ms |")
     lines += [
         "", f"Đo trên {report['n_questions']} câu dev theo thứ tự đã xác minh, không gọi LLM.",
-        f"Dense lấy {dense_pool} đoạn khi đo top 10. Hybrid lấy {hybrid_depth} đoạn từ HNSW, "
+        f"Dense lấy {dense_pool} đoạn khi đo top 10. Hybrid lấy {hybrid_depth} đoạn từ {dense_stage}, "
         f"giữ {hybrid_pool} đoạn theo cosine và lấy tối đa {hybrid_pool} tài liệu từ BM25. "
         "RRF hợp nhất theo mã tài liệu.",
         "Cả hai phương pháp khởi động bằng ba câu ngoài dev. Thứ tự câu hỏi giống nhau "
@@ -223,7 +225,8 @@ def measure(settings, output):
                 "query_cleaning": "conservative greeting stripping (>=4 words preserved)",
             },
             "hybrid": {
-                "version": f"Hybrid RRF, Chroma {max(settings.candidate_pool, settings.hybrid_dense_depth)}, retain {settings.candidate_pool}",
+                "backend": retriever.hybrid_backend,
+                "version": f"Hybrid RRF, {retriever.hybrid_backend}, retain {settings.candidate_pool}",
                 "candidate_pool_per_branch": settings.candidate_pool,
                 "dense_query_depth": max(settings.candidate_pool, settings.hybrid_dense_depth),
                 "rrf_k": settings.rrf_k,
