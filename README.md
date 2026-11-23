@@ -6,6 +6,8 @@ Bài dự thi AI Challenge 24h của Vương Đình Bình. ViCare tìm tài li�
 
 ## Chạy notebook
 
+Để trải nghiệm giao diện web Gradio, mở [ViCare Web Demo](https://colab.research.google.com/github/Vdbinh05/ViCare-AI-Challenge/blob/8e668bf53932c57734c0366569ecf14d7f7d835f/ViCare_Web_Demo.ipynb), đăng nhập Google, chọn **Runtime → Run all** và nhập câu hỏi trong khung cuối. Giao diện và mô hình chạy trên máy ảo Colab của người mở. Khi máy tác giả tắt, người chấm vẫn dùng được phiên riêng. Máy mới cần tải mô hình và lập chỉ mục hơn 11.000 đoạn. Riêng bước lập chỉ mục CPU có thể mất hơn nửa giờ.
+
 1. Mở notebook sạch qua liên kết Google Colab phía trên. Bản mặc định yêu cầu GPU. Chọn T4 nếu tài khoản còn hạn mức miễn phí. Để chạy trên CPU, bỏ chọn `REQUIRE_GPU` ngay ô cấu hình.
 2. Chọn **Runtime → Run all**. Notebook khôi phục snapshot source đã kiểm SHA-256, thiết lập môi trường, xây index E5, khởi động Ollama với `qwen3:4b-instruct` rồi chạy các bảng đánh giá. Máy mới cần mạng và thời gian tải dữ liệu, thư viện cùng trọng số.
 3. Ở mục **Nhập câu hỏi và kiểm tra nguồn**, thay nội dung câu hỏi và chạy lại ô **Hỏi ViCare**. Các ô cuối xuất JSON/CSV của chính phiên chạy.

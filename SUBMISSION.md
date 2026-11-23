@@ -20,6 +20,9 @@ Demo đạt 6/6 ca đã đặt trước. Trên 10 câu đầu Dev, bản cuối 
 
 THÔNG TIN DÀNH CHO BAN GIÁM KHẢO
 
+Web hỏi đáp trực tiếp trên máy ảo của giám khảo. Đăng nhập Google, chọn Runtime → Run all rồi nhập câu hỏi ở giao diện cuối trang. Lần đầu cần tải mô hình và dựng chỉ mục:
+https://colab.research.google.com/github/Vdbinh05/ViCare-AI-Challenge/blob/8e668bf53932c57734c0366569ecf14d7f7d835f/ViCare_Web_Demo.ipynb
+
 Demo có sẵn câu trả lời và nguồn, mở xem ngay:
 https://colab.research.google.com/github/Vdbinh05/ViCare-AI-Challenge/blob/ffbc841b5ce371c104b7d6ab4bb16d3c7c8f40f8/ViCare_Linux_CPU_Executed.ipynb#scrollTo=interactive-question
 
