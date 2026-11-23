@@ -1,4 +1,5 @@
 import os
+import unicodedata
 from collections import OrderedDict
 from types import SimpleNamespace
 
@@ -10,8 +11,8 @@ from src.embeddings import Embedder
 from src.generation import Assistant
 from src.retrieval import (
     ACCENTED_STOPWORDS, BM25_B, BM25_K1, Hit, Retriever, SparseIndex, build_index, fuse,
-    open_retriever, parse_dense, strip_query_greetings, tokenize, tokenize_accented,
-    tokenize_folded, unique_hits,
+    has_vietnamese_diacritics, open_retriever, parse_dense, strip_query_greetings,
+    tokenize, tokenize_accented, tokenize_folded, unique_hits,
 )
 
 
@@ -178,6 +179,25 @@ def test_rrf_tie_break_repeatability_and_depth():
     assert fuse([], [], k=5) == []
 
 
+def test_fusion_preserves_dense_passage_without_changing_document_order_or_scores():
+    relevant = hit("a", 1, text="Triệu chứng tăng huyết áp")
+    sparse_first = hit("a", 0, text="Tổng quan chức năng cơ thể")
+    other = hit("b")
+    result = fuse([other, relevant], [sparse_first], k=2)
+    assert [h.chunk.doc_id for h in result] == ["a", "b"]
+    assert [h.score for h in result] == pytest.approx([.5 / 62 + .5 / 61, .5 / 61])
+    assert result[0].chunk == relevant.chunk
+
+
+def test_fusion_uses_sparse_passage_when_dense_branch_is_disabled():
+    dense = hit("a", 1, text="Dense-selected passage")
+    sparse = hit("a", 2, text="Lexically selected passage")
+    result = fuse([dense, hit("b")], [sparse], k=2, dense_weight=0, sparse_weight=1)
+    assert [h.chunk.doc_id for h in result] == ["a"]
+    assert result[0].score == pytest.approx(1 / 61)
+    assert result[0].chunk == sparse.chunk
+
+
 def test_dataset_keeps_first_source_and_gold_for_duplicate_cleaned_documents():
     ds = OrderedDict([
         ("train", [{"id": 17, "question": "Câu hỏi", "answer": "  Hỏi qa@example.org  ",
@@ -278,13 +298,13 @@ def test_hybrid_v2_doc_level_bm25_deduplicates_multichunk_docs_and_breaks_ties_d
     assert len(index.items) == 3
     assert {item.doc_id for item in index.items} == {"doc-a", "doc-b", "doc-c"}
 
-    # Query matches text located in chunk #1 of doc-b, returning doc-b's preserved first-chunk metadata once
+    # Query matches chunk #1 of doc-b; keep that evidence with the unchanged parent metadata.
     results = index.search("trào ngược dạ dày", 5)
     doc_ids = [item.chunk.doc_id for item in results]
     assert len(doc_ids) == len(set(doc_ids))
     assert "doc-b" in doc_ids
     doc_b_hit = next(item for item in results if item.chunk.doc_id == "doc-b")
-    assert doc_b_hit.chunk == c1_a
+    assert doc_b_hit.chunk == c1_b
 
     # Deterministic tie-breaking across identical documents
     tie_a = hit("tie-a", 0, text="Xét nghiệm đường huyết lúc đói").chunk
@@ -293,6 +313,34 @@ def test_hybrid_v2_doc_level_bm25_deduplicates_multichunk_docs_and_breaks_ties_d
     first_run = tie_idx.search("đường huyết", 2)
     assert [item.chunk.doc_id for item in first_run] == ["tie-a", "tie-b"]
     assert tie_idx.search("đường huyết", 2) == first_run
+
+
+@pytest.mark.parametrize("question", ["Triệu chứng tăng huyết áp", "trieu chung tang huyet ap"])
+def test_sparse_passage_selection_preserves_whole_document_ranking_and_scores(question):
+    index = SparseIndex([
+        hit("long", 0, text="Tổng quan chức năng cơ thể bình thường").chunk,
+        hit("long", 1, text="Triệu chứng tăng huyết áp").chunk,
+        hit("short", 0, text="Triệu chứng tăng huyết áp").chunk,
+        hit("diet", text="Dinh dưỡng").chunk,
+        hit("movement", text="Vận động").chunk,
+        hit("tests", text="Xét nghiệm").chunk,
+    ])
+    result = index.search(question, 5)
+    assert [h.chunk.doc_id for h in result] == ["short", "long"]
+    # Whole-document BM25 values from this fixed five-document corpus.
+    assert [h.score for h in result] == pytest.approx([2.97170604003424, 1.7011428875255385])
+    assert [h.chunk.chunk_id for h in result] == ["short#0", "long#1"]
+
+
+def test_sparse_passage_overlap_ties_use_chunk_id_instead_of_input_order():
+    index = SparseIndex([
+        hit("multi", 2, text="Triệu chứng tăng huyết áp").chunk,
+        hit("multi", 1, text="Triệu chứng tăng huyết áp").chunk,
+        hit("other", text="Chế độ dinh dưỡng").chunk,
+        hit("last", text="Xét nghiệm máu").chunk,
+    ])
+    result = index.search("tăng huyết áp", 3)
+    assert [h.chunk.chunk_id for h in result] == ["multi#1"]
 
 
 def test_hybrid_v2_accented_stopwords_preserve_vietnamese_medical_compounds():
@@ -336,6 +384,24 @@ def test_hybrid_v2_adaptive_diacritic_routing_handles_accented_and_diacritic_fre
     assert index.search("huyet ap cao", 3)[0].chunk.doc_id == "d-bp"
     assert "f:huyet" in tokenize_folded("huyet ap cao")
     assert "fb:huyet ap" in tokenize_folded("huyet ap cao")
+
+
+@pytest.mark.parametrize("question", [
+    "“trieu chung”", "trieu chung 🙂", "trieu chung —", "trieu\u00a0chung",
+])
+def test_bm25_unaccented_queries_ignore_unicode_decoration(question):
+    index = SparseIndex([
+        hit("symptoms", text="Triệu chứng thông thường").chunk,
+        hit("nutrition", text="Chế độ dinh dưỡng").chunk,
+        hit("tests", text="Xét nghiệm máu").chunk,
+    ])
+    assert [h.chunk.doc_id for h in index.search(question, 3)] == ["symptoms"]
+
+
+@pytest.mark.parametrize("text", ["ĐAU", "ă", "â", "ê", "ô", "ơ", "ư", "huyết áp"])
+def test_diacritic_routing_recognizes_vietnamese_letters_in_both_unicode_forms(text):
+    assert has_vietnamese_diacritics(unicodedata.normalize("NFC", text))
+    assert has_vietnamese_diacritics(unicodedata.normalize("NFD", text))
 
 
 def test_hybrid_v2_strip_query_greetings_is_conservative_and_preserves_short_queries():

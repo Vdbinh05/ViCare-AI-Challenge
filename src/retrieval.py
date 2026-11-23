@@ -20,6 +20,13 @@ MANIFEST = "vicare-index.json"
 BM25_K1 = 1.2
 BM25_B = 0.75
 
+_VIETNAMESE_DIACRITIC_LETTERS = frozenset(
+    "àáảãạăằắẳẵặâầấẩẫậ"
+    "èéẻẽẹêềếểễệìíỉĩị"
+    "òóỏõọôồốổỗộơờớởỡợ"
+    "ùúủũụưừứửữựỳýỷỹỵđ"
+)
+
 # Strictly accented Vietnamese grammatical particles only (matched on NFC-accented words so
 # medical compounds like "tử cung", "cổ tử cung", "đo huyết áp", "ợ chua", "sâu răng" are preserved).
 ACCENTED_STOPWORDS = frozenset({
@@ -109,7 +116,10 @@ def strip_query_greetings(text):
 
 
 def has_vietnamese_diacritics(text):
-    return isinstance(text, str) and any(ord(ch) > 127 for ch in text)
+    """Recognize marked Vietnamese letters, not Unicode punctuation or emoji."""
+    return isinstance(text, str) and not _VIETNAMESE_DIACRITIC_LETTERS.isdisjoint(
+        unicodedata.normalize("NFC", text).casefold()
+    )
 
 
 def _extract_words(text, *, remove_accented_stopwords=True):
@@ -170,11 +180,13 @@ class SparseIndex:
         self.k1 = k1
         self.b = b
         grouped_texts = defaultdict(list)
+        self.chunks_by_doc = defaultdict(list)
         first_chunk = {}
         for chunk in self.chunks:
             if chunk.doc_id not in first_chunk:
                 first_chunk[chunk.doc_id] = chunk
             grouped_texts[chunk.doc_id].append(chunk.text)
+            self.chunks_by_doc[chunk.doc_id].append(chunk)
         self.items = [first_chunk[doc_id] for doc_id in first_chunk]
         self.postings = defaultdict(list)
         token_lists = []
@@ -186,6 +198,14 @@ class SparseIndex:
                 self.postings[token].append(i)
         self.bm25 = BM25Okapi(token_lists, k1=k1, b=b) if self.postings else None
 
+    def _best_passage(self, doc_id, query_tokens):
+        chunks = self.chunks_by_doc[doc_id]
+        if len(chunks) == 1:
+            return chunks[0]
+        return min(chunks, key=lambda chunk: (
+            -len(query_tokens.intersection(_tokenize_document(chunk.text))), chunk.chunk_id,
+        ))
+
     def search(self, query, limit):
         cleaned = strip_query_greetings(query)
         raw_tokens = tokenize_accented(cleaned) if has_vietnamese_diacritics(cleaned) else tokenize_folded(cleaned)
@@ -195,22 +215,22 @@ class SparseIndex:
             return []
         scores = self.bm25.get_batch_scores(tokens, indices)
         ranked = [Hit(self.items[i], float(score)) for i, score in zip(indices, scores)]
-        return sorted(ranked, key=lambda hit: (-hit.score, hit.chunk.doc_id, hit.chunk.chunk_id))[:limit]
+        ranked = sorted(ranked, key=lambda hit: (-hit.score, hit.chunk.doc_id, hit.chunk.chunk_id))[:limit]
+        query_tokens = set(tokens)
+        return [Hit(self._best_passage(hit.chunk.doc_id, query_tokens), hit.score) for hit in ranked]
 
 
 def fuse(dense, sparse, *, k, rrf_k=60, dense_weight=0.5, sparse_weight=0.5):
     scores = defaultdict(float)
     representatives = {}
-    best_ranks = {}
     for branch, weight in ((dense, dense_weight), (sparse, sparse_weight)):
         if weight == 0:
             continue
         for rank, hit in enumerate(unique_hits(branch), 1):
             doc_id = hit.chunk.doc_id
             scores[doc_id] += weight / (rrf_k + rank)
-            if rank < best_ranks.get(doc_id, math.inf):
-                representatives[doc_id] = hit.chunk
-                best_ranks[doc_id] = rank
+            # Dense runs first; a sparse document rank must not replace its matching passage.
+            representatives.setdefault(doc_id, hit.chunk)
     ranked_ids = sorted(scores, key=lambda doc_id: (-scores[doc_id], doc_id))
     return [Hit(representatives[doc_id], scores[doc_id]) for doc_id in ranked_ids[:k]]
 

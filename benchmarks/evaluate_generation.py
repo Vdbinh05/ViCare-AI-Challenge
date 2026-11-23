@@ -65,6 +65,33 @@ def latency_summary(rows, field):
             "p95": statistics.quantiles(values, n=100, method="inclusive")[94]}
 
 
+def response_metrics(rows):
+    """Separate answering coverage from the legacy judge, which can reward refusals."""
+    by_status = {}
+    for row in rows:
+        counts = by_status.setdefault(row["status"], {"total": 0, "ones": 0, "zeros": 0, "unscored": 0})
+        counts["total"] += 1
+        score = row["judge_score"]
+        counts["ones" if score == 1 else "zeros" if score == 0 else "unscored"] += 1
+    answered = by_status.get("answered", {}).get("total", 0)
+    positive_answers = by_status.get("answered", {}).get("ones", 0)
+    return {
+        "answered": answered,
+        "answer_rate": answered / len(rows) if rows else None,
+        "judge_positive_answers": positive_answers,
+        "supported_answer_yield": positive_answers / len(rows) if rows else None,
+        "supported_answer_yield_definition": (
+            "status == answered and raw Judge == 1, divided by all questions. "
+            "A descriptive model-judged answer yield, not verified clinical accuracy. "
+            "Refusals, emergencies and failures receive no yield credit; "
+            "the correctness of safe refusals is not assessed by this metric."
+        ),
+        "judge_positive_refusals": by_status.get("refused", {}).get("ones", 0),
+        "judge_positive_emergencies": by_status.get("emergency", {}).get("ones", 0),
+        "judge_by_status": by_status,
+    }
+
+
 def write_csv(path, rows):
     temporary = path.with_suffix(".csv.tmp")
     with temporary.open("w", newline="", encoding="utf-8") as stream:
@@ -205,6 +232,7 @@ def run(output=DEFAULT_OUTPUT, method="Hybrid", run_label="rerun", save_review_i
         "timeout_seconds": settings.timeout,
         "n_questions": N_JUDGE, "judge_hits": credited, "judge_rate": credited / N_JUDGE,
         "score_definition": "All 10 questions. Invalid judge, judge error or application failure scores zero.",
+        **response_metrics(public_rows),
         "raw_judge_ones": scores.count(1), "raw_judge_zeros": scores.count(0),
         "invalid_judgments_including_errors": scores.count(None) - skipped,
         "invalid_judge_format": scores.count(None) - skipped - judge_errors,
@@ -221,7 +249,10 @@ def run(output=DEFAULT_OUTPUT, method="Hybrid", run_label="rerun", save_review_i
     }
     write_json(output, result)
     write_csv(output.with_suffix(".csv"), public_rows)
-    print(f"Judge {credited}/{N_JUDGE}, refusals {refusals}/{N_JUDGE}, invalid {scores.count(None)}")
+    print(f"Legacy Judge {credited}/{N_JUDGE}, answered {result['answered']}/{N_JUDGE}, "
+          f"Judge-positive answers {result['judge_positive_answers']}/{N_JUDGE}, "
+          f"Judge-positive refusals {result['judge_positive_refusals']}/{refusals}, "
+          f"invalid {scores.count(None)}")
     return result
 
 

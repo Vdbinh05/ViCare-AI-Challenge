@@ -112,7 +112,7 @@ def test_chat_failure_keeps_sources_and_same_assistant_recovers(endpoint, caplog
         (200, envelope("")),
         (200, envelope("unparseable synthetic verdict")),
         (200, envelope(json.dumps(stage3))),
-        (200, envelope(json.dumps({"id": 1}))),
+        (200, envelope(json.dumps({"start_id": 1, "end_id": 1}))),
         (200, envelope(json.dumps({"question": question}))),
         (200, envelope(json.dumps({"relation": "SAME"}))),
     ]
@@ -144,7 +144,7 @@ def test_source_only_check_isolated_and_rejects_different_or_malformed_scope(end
     assistant = Assistant(Settings(ollama_host=endpoint.host, timeout=3),
                           retriever_factory=lambda: SimpleNamespace(search=lambda *_: result))
     stage3 = {"verdict": "SUFFICIENT", "supporting_ids": ["1"], "evidence_quotes": [excerpt]}
-    scripted = [stage3, {"id": 1}, {"question": "Câu nào được trích?"}, {"relation": relation}]
+    scripted = [stage3, {"start_id": 1, "end_id": 1}, {"question": "Câu nào được trích?"}, {"relation": relation}]
     endpoint.posts = [(200, envelope(json.dumps(item))) for item in scripted]
     reply = assistant.ask(question, "Dense")
     assert reply.reason_code == reason and reply.citation_ids == [] and reply.hits == [hit]
@@ -164,7 +164,8 @@ def test_unusable_selected_sentence_refuses_before_followup_calls(endpoint, ques
     assistant = Assistant(Settings(ollama_host=endpoint.host, timeout=3),
                           retriever_factory=lambda: SimpleNamespace(search=lambda *_: result))
     stage3 = {"verdict": "SUFFICIENT", "supporting_ids": ["1"], "evidence_quotes": [excerpt]}
-    endpoint.posts = [(200, envelope(json.dumps(data))) for data in (stage3, {"id": 1})]
+    endpoint.posts = [(200, envelope(json.dumps(data)))
+                      for data in (stage3, {"start_id": 1, "end_id": 1})]
     reply = assistant.ask(question, "Hybrid")
     assert reply.reason_code == "INSUFFICIENT_EVIDENCE" and reply.citation_ids == []
     assert len(endpoint.calls) == 2 and not endpoint.posts

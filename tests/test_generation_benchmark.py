@@ -55,15 +55,43 @@ def test_fixed_denominator_and_private_text_on_mixed_results(tmp_path, monkeypat
     assert result["judge_skipped_application_exception"] == 1
     assert result["technical_failures"] == 2
     assert result["refusals"] == 8
+    assert result["answered"] == result["judge_positive_answers"] == 0
+    assert result["answer_rate"] == result["supported_answer_yield"] == 0
+    assert result["judge_positive_refusals"] == 6
+    assert result["judge_by_status"]["unavailable"]["ones"] == 1
     assert json.loads(output.read_text(encoding="utf8"))["rows"] == result["rows"]
     for path in (output, output.with_suffix(".csv")):
         assert "private-" not in path.read_text(encoding="utf8")
 
 
+def test_answer_yield_keeps_full_denominator_and_separates_safe_actions_from_answers():
+    rows = [{"status": status, "judge_score": score} for status, score in [
+        ("answered", 1), ("answered", 0), ("answered", None),
+        ("refused", 1), ("refused", 1), ("refused", 0), ("refused", None),
+        ("emergency", 1), ("unavailable", 1), ("invalid", 1),
+    ]]
+    result = benchmark.response_metrics(rows)
+    assert result["answered"] == 3 and result["answer_rate"] == .3
+    assert result["judge_positive_answers"] == 1 and result["supported_answer_yield"] == .1
+    assert result["judge_positive_refusals"] == 2 and result["judge_positive_emergencies"] == 1
+    assert result["judge_by_status"]["answered"] == {"total": 3, "ones": 1, "zeros": 1, "unscored": 1}
+    assert sum(counts["total"] for counts in result["judge_by_status"].values()) == 10
+
+
 @pytest.mark.parametrize("quote,passed", [
     ("Nhịp tim ảnh hưởng đến kết quả đo lưu huyết não.", True),
+    ("Tài liệu mô tả phép đo lưu huyết não.\nNhịp tim ảnh hưởng đến kết quả đo lưu huyết não.", True),
+    ("Tài liệu mô tả phép đo lưu huyết não.\n"
+     "Nhịp tim ảnh hưởng đến kết quả đo lưu huyết não.\n"
+     "Huyết áp là một chỉ số sức khỏe.", True),
     ("Kết quả đo lưu huyết não bị ảnh hưởng bởi huyết áp.", True),
     ("Huyết áp bị ảnh hưởng bởi kết quả đo lưu huyết não.", False),
+    ("Kết quả đo lưu huyết não được ghi lại.\n"
+     "Giấc ngủ bị ảnh hưởng bởi tiếng ồn.\n"
+     "Huyết áp là một chỉ số sức khỏe.", False),
+    ("Kết quả đo lưu huyết não được ghi lại."
+     "Giấc ngủ bị ảnh hưởng bởi tiếng ồn."
+     "Huyết áp là một chỉ số sức khỏe.", False),
 ])
 def test_demo_checks_measurement_relation_separately_from_publication(quote, passed):
     source = SimpleNamespace(doc_id="alternative", chunk_id="alternative#2", url="", text=quote)

@@ -8,7 +8,7 @@ from pathlib import Path
 
 from benchmarks.evaluate_generation import write_json
 from src.config import DEFAULT_LLM_MODEL, Settings
-from src.generation import Assistant
+from src.generation import Assistant, _SENTENCE_BREAK
 from src.retrieval import open_retriever
 from src.safety import DISCLAIMER, normalize_vietnamese, validate_url
 
@@ -28,13 +28,18 @@ CASES = (
 REVIEWED_QUOTE_SHA256 = "e63097b332feded3df36b7b14ccde91770c7dde07f0ee01a9286867bc07a6f90"
 
 
-def identifies_measurement_factor(sentence):
-    words = normalize_vietnamese(sentence)
+def identifies_measurement_factor(passage):
     measurement = r"(?:ket qua|chi so|tri so|gia tri)(?: cua)?(?: phep)?(?: do)? luu huyet nao"
     relation = (r"(?:anh huong (?:den|toi|len)|tac dong (?:den|toi|len)|lam thay doi) " + measurement
                 + "|" + measurement + r"[^.!?]{0,70}(?:phu thuoc|bi anh huong|chiu anh huong)")
     factors = r"\b(?:nhip tim|huyet ap|do nhot|ap luc noi so|thuoc van mach)\b"
-    return bool(re.search(relation, words) and re.search(factors, words))
+    # Split before normalization removes punctuation; unrelated sentences must not
+    # supply separate pieces of an apparent factor-to-measurement relationship.
+    for sentence in _SENTENCE_BREAK.split(passage):
+        words = normalize_vietnamese(sentence)
+        if re.search(relation, words) and re.search(factors, words):
+            return True
+    return False
 
 
 def check_case(assistant, spec):
@@ -51,7 +56,7 @@ def check_case(assistant, spec):
     if reply.status == "answered":
         # Only publish an actual, reviewed response. Never substitute an expected answer.
         pattern = r"Tài liệu \[(\d+)\] ghi “(.+)”\n\n" + re.escape(DISCLAIMER)
-        quoted = re.fullmatch(pattern, reply.answer)
+        quoted = re.fullmatch(pattern, reply.answer, flags=re.DOTALL)
         approved = bool(quoted and hashlib.sha256(quoted[2].encode()).hexdigest() == REVIEWED_QUOTE_SHA256)
         public_answer = reply.answer if approved else None
         grounded = bool(quoted and quoted[1] in reply.citation_ids
