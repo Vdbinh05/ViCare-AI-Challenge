@@ -12,6 +12,8 @@ ViCare tra cứu kiến thức sức khỏe tiếng Việt trong ViHealthQA. Ng�
 
 Phiên bản notebook `67799e6c09eda71e5d54ec729227afdf737dbd76` dùng source `b9a586aecf9837fdf991dddd55f07d26b43d3b64`. Bộ dữ liệu, embedding, digest Qwen và cấu hình đánh giá đều được ghi trong notebook. [Báo cáo và trạng thái kiểm chứng](results/colab/REPORT.md) · [Ảnh minh chứng](media/final/) · [Bản bài đăng Facebook](SUBMISSION.md)
 
+Trên máy CPU miễn phí của Google, lần dựng mới chỉ mục 11.227 đoạn mất 35 phút 16 giây. Trên cùng Dev100 ở Colab, Recall@5 là 51/100 với Dense, 54/100 với Hybrid v2, 55/100 với Hybrid HNSW đã khóa và 55/100 với Hybrid cosine chính xác. [Bảng Recall, độ phủ và thời gian trên Colab](results/colab/REPORT.md#kiểm-chứng-colab)
+
 ## Từ câu hỏi đến đoạn dẫn nguồn
 
 Kho tra cứu gồm 9.895 tài liệu từ cột đáp án của ViHealthQA sau khi khử trùng, chia thành 11.227 đoạn, mỗi đoạn tối đa 200 từ và chồng lấn 40 từ. E5 mã hóa đoạn với tiền tố `passage:` và câu hỏi với `query:`. Chroma lưu vector chuẩn hóa 384 chiều. Câu hỏi và nhãn gold của bộ đánh giá không tham gia lập chỉ mục.

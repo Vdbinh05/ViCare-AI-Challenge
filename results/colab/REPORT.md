@@ -45,4 +45,17 @@ Trên đúng `dev[:10]`, cả Dense, Hybrid HNSW và Hybrid cosine chính xác �
 
 ## Kiểm chứng Colab
 
-Đã đối chiếu đủ 22 ô của notebook với bản công khai. Notebook chứa 10 ô code, ghim mã nguồn và chạy cùng ứng dụng. Các số đo bên trên thực hiện trên Windows. **COLAB_NOT_RUN** tại thời điểm công bố kết quả Windows: phiên đầu đã kết nối được Google Colab, sau đó mất kết nối trước khi thu output của ô đầu. Chưa có lượt hosted hoàn chỉnh và ZIP đầu ra của máy ảo Google. Để kiểm chứng lại, mở notebook chính từ runtime miễn phí mới, chạy toàn bộ, lưu ZIP cuối cùng và tải bản notebook có output. [Notebook công khai](https://colab.research.google.com/github/Vdbinh05/ViCare-AI-Challenge/blob/67799e6c09eda71e5d54ec729227afdf737dbd76/ViCare_Vuong_Dinh_Binh.ipynb)
+Runtime Google Colab miễn phí bắt đầu lúc 09:17 ngày 23/11/2026 (giờ Việt Nam), dùng 2 luồng CPU, RAM 12,67 GiB và còn 107,62 GiB đĩa lúc khởi động. Kernel dùng Python 3.13.18. Môi trường riêng của ViCare dùng Python 3.11.14 và Torch 2.7.1+cpu. Lệnh pytest mặc định đạt 167 ca và bỏ qua 5 ca tích hợp theo cờ cấu hình. Một lượt WSL Ubuntu độc lập cũng đạt 167 ca và bỏ qua cùng 5 ca khi dùng thư mục tạm Linux.
+
+Colab lấy đúng mã nguồn `b9a586a` và mất 2.115,58 giây để dựng chỉ mục E5. Corpus có 9.895 tài liệu, 11.227 đoạn. Chữ ký corpus và chữ ký 100 câu theo thứ tự khớp với lượt Windows. Bốn cấu hình dưới đây được đo lại trên cùng máy ảo Google, cùng kho và cùng Dev100.
+
+| Cấu hình trên Colab | R@1 | R@3 | R@5 | R@10 | Trong index | Hợp ứng viên | Trong 50 tài liệu | Trung vị / p95 (ms) | Lỗi |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Dense | 37% | 47% | 51% | 55% | 100% | 79% | 71% | 57 / 308 | 0 |
+| Hybrid v2 | 38% | 51% | 54% | 59% | 100% | 83% | 74% | 277 / 938 | 0 |
+| Hybrid HNSW đã khóa | 38% | 52% | 55% | 60% | 100% | 82% | 74% | 297 / 1.092 | 0 |
+| Hybrid cosine chính xác | 38% | 52% | 55% | 60% | 100% | 82% | 74% | 261 / 1.094 | 0 |
+
+Bản chọn tìm được thêm 4 tài liệu chuẩn trong top 5 so với Dense trên cả hai máy. So với Hybrid đã khóa, số hit tại cả bốn mức bằng nhau ở từng môi trường. Hybrid v2 đạt 54/100 ở top 5 trên Colab và 56/100 trên Windows. Hai máy dựng chỉ mục riêng. Chênh lệch giữa hai lượt đo chưa xác định được nguyên nhân.
+
+Ollama 0.40.17 khởi động trong máy ảo và trả lời câu thử bằng `OK`. Tag `qwen3:4b-instruct` có digest `0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0`. Ollama báo 3.186.108.660 byte bộ nhớ cho mô hình đã nạp và 0 byte VRAM. Lượt đánh giá câu trả lời trên Colab bắt đầu lúc 09:59. Tại mốc công bố kết quả truy xuất, ô này đang chạy. Các số Judge và từ chối ở phần Windows được giữ riêng.
