@@ -14,9 +14,9 @@ Mình dùng ViHealthQA, multilingual-E5-small, Chroma, BM25 và Qwen3 4B Instruc
 
 **3. Kết quả**
 
-Trên cùng Dev100 đo ở Windows, Dense tìm được tài liệu chuẩn trong top 5 ở 51/100 câu. Hybrid đã khóa trước đó và Hybrid chọn cho notebook cùng đạt 55/100. Hybrid v2 từng dùng 80 đoạn HNSW đạt 56/100 khi đo lại. Cosine chính xác tăng từ 123 lên 125 hit trên 200 câu chọn cấu hình, nhưng tập xác nhận bổ sung vẫn giữ 68/100. Mình công bố cả thử nghiệm reranker bị giảm điểm.
+Trên máy CPU miễn phí của Google Colab, Dense tìm được tài liệu chuẩn trong top 5 ở 51/100 câu Dev100. Hybrid đã khóa trước đó và Hybrid chọn cho notebook cùng đạt 55/100. Khi chạy trên Windows, cả ba cấu hình cũng cho các kết quả này. Riêng Hybrid v2 đạt 54/100 trên Colab và 56/100 trên Windows. Cosine chính xác tăng từ 123 lên 125 hit trên 200 câu chọn cấu hình, còn tập xác nhận bổ sung vẫn giữ 68/100. Mình công bố cả kết quả reranker giảm còn 119/200.
 
-Phần đánh giá trả lời dùng đúng 10 câu đầu dev. ViCare từ chối 9 câu và chuyển hướng cấp cứu 1 câu. Judge tự động vẫn cho 9/10, kể cả tám câu từ chối. Ở câu hỏi demo riêng về yếu tố ảnh hưởng đến kết quả đo lưu huyết não, ViCare trích đúng nguồn `train-4308`. Câu hỏi địa lý được nhận diện là ngoài phạm vi. Đây là demo học thuật, không dùng để tự chẩn đoán hoặc kê đơn.
+Trên Windows, phần đánh giá trả lời dùng đúng 10 câu đầu dev. ViCare từ chối 9 câu và chuyển hướng cấp cứu 1 câu. Judge tự động cho 9/10, kể cả tám câu từ chối. Ở câu hỏi demo riêng về yếu tố ảnh hưởng đến kết quả đo lưu huyết não, ViCare trích đúng nguồn `train-4308`. Câu hỏi địa lý được nhận diện là ngoài phạm vi. Đây là demo học thuật, không dùng để tự chẩn đoán hoặc kê đơn.
 
 **THÔNG TIN DÀNH CHO BAN GIÁM KHẢO**
 
