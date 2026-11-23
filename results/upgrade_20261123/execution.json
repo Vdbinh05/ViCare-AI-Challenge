@@ -1,0 +1,41 @@
+{
+  "environment": "local Linux CPU; not hosted Colab",
+  "stages": [
+    {
+      "name": "generation_before",
+      "started_utc": "2026-11-23T02:10:47.223502+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 453.996
+    },
+    {
+      "name": "generation_after",
+      "started_utc": "2026-11-23T02:18:21.220927+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 414.903
+    },
+    {
+      "name": "retrieval_dev100",
+      "started_utc": "2026-11-23T02:25:16.125226+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 76.826
+    },
+    {
+      "name": "retrieval_confirmation100",
+      "started_utc": "2026-11-23T02:26:32.952275+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 50.274
+    },
+    {
+      "name": "demo",
+      "started_utc": "2026-11-23T02:27:23.236309+00:00",
+      "exit_code": 1,
+      "elapsed_seconds": 110.691
+    },
+    {
+      "name": "pytest_real",
+      "started_utc": "2026-11-23T02:29:13.930279+00:00",
+      "exit_code": 1,
+      "elapsed_seconds": 89.645
+    }
+  ]
+}

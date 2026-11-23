@@ -1,0 +1,2187 @@
+{
+  "created_utc": "2026-11-23T02:33:23.084125+00:00",
+  "split": "nodiac50",
+  "n_questions": 50,
+  "variants": [
+    "original",
+    "curly_quotes"
+  ],
+  "interpretation": "Robustness on previously used tuning examples; not a holdout or an independent gain.",
+  "protocol": "All 50 locked NoDiac50 IDs; unchanged normalized question and the same text wrapped in U+201C/U+201D; production Hybrid search at k=10; errors are misses.",
+  "metadata": {
+    "source_commit": "af282252ed56190a15d12c17eb258f3bc875f844",
+    "source_sha256": {
+      "src/config.py": "3f7fc2036e7e1181c6aa93b4dc84f0b1201b68000ef082ab4a114166b0931f7a",
+      "src/dataset.py": "071db5fb6de8381321784ccc4dc805861f1714441ae561b3d6faac70239e9729",
+      "src/embeddings.py": "a5e0e6cd2ff63ae4f9a154ffde39f8b1df53425b722a33ec62e0b1db953a3eab",
+      "src/exact_search.py": "570391358606b4724acf6efbf63e0d7119e574f4a684da5946e99c4ac5d45fbe",
+      "src/retrieval.py": "f522b29322d235ff50141dd41ae31fac2443c3a9604ffbda44f8622998d6b132",
+      "src/safety.py": "d94c03248a923b4231e47bdfa79f89f335fe499e98c1922a89498fc585ae135d",
+      "benchmarks/retrieval_study.py": "1fecbd8728f0af8c5cba8cc55eddad38c5d5b6977f8761c90fbc3c448fea948a",
+      "benchmarks/evaluate_unicode_robustness.py": "260f333f2483e6389feeafba2cd62deedf273c21e7a9f0b3422ef3a620510418"
+    },
+    "hash_encoding": "UTF-8, LF line endings",
+    "sets_sha256": "04f94354cc188f190244daa056a64a7eba165050336535b24d2b77e51ffcac4d",
+    "dataset_revision": "d90a62deedfc822a15de3f35535bb41474e4d3f4",
+    "corpus_sha256": "35902972d43e0841495d6f920901c99146d08e7e745cb5670c76d3d9f367ea87",
+    "e5": "intfloat/multilingual-e5-small",
+    "e5_revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "e5_device": "cpu",
+    "backend": "exact",
+    "method": "Hybrid",
+    "k": 10,
+    "candidate_pool": 80,
+    "hybrid_dense_depth": 200,
+    "rrf_k": 40,
+    "dense_weight": 0.5,
+    "sparse_weight": 0.5,
+    "documents": 9895,
+    "chunks": 11227,
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.11.14",
+    "packages": {
+      "numpy": "1.26.4",
+      "torch": "2.7.1+cpu",
+      "chromadb": "1.0.20",
+      "sentence-transformers": "3.4.1",
+      "datasets": "3.6.0",
+      "rank-bm25": "0.2.2"
+    }
+  },
+  "metrics": {
+    "original": {
+      "n": 50,
+      "errors": 0,
+      "hit_counts": {
+        "@1": 8,
+        "@3": 20,
+        "@5": 22,
+        "@10": 24
+      },
+      "recall": {
+        "@1": 0.16,
+        "@3": 0.4,
+        "@5": 0.44,
+        "@10": 0.48
+      }
+    },
+    "curly_quotes": {
+      "n": 50,
+      "errors": 0,
+      "hit_counts": {
+        "@1": 7,
+        "@3": 18,
+        "@5": 22,
+        "@10": 24
+      },
+      "recall": {
+        "@1": 0.14,
+        "@3": 0.36,
+        "@5": 0.44,
+        "@10": 0.48
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "t000",
+      "source_id": "train-3903",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-3903"
+      ],
+      "retrieved_doc_ids": [
+        "train-1232",
+        "train-3928",
+        "test-239",
+        "train-3829",
+        "train-6317",
+        "test-93",
+        "train-5187",
+        "test-808",
+        "train-3280",
+        "train-1447"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t000",
+      "source_id": "train-3903",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-3903"
+      ],
+      "retrieved_doc_ids": [
+        "train-1232",
+        "train-3928",
+        "train-6317",
+        "test-239",
+        "train-3829",
+        "train-4939",
+        "train-5187",
+        "test-808",
+        "validation-441",
+        "test-93"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t001",
+      "source_id": "train-2782",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-2782"
+      ],
+      "retrieved_doc_ids": [
+        "train-237",
+        "train-3773",
+        "train-4187",
+        "train-3412",
+        "validation-763",
+        "test-93",
+        "train-6452",
+        "train-1642",
+        "train-6317",
+        "test-239"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t001",
+      "source_id": "train-2782",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-2782"
+      ],
+      "retrieved_doc_ids": [
+        "train-237",
+        "train-3412",
+        "train-6317",
+        "train-4939",
+        "train-6452",
+        "train-1642",
+        "validation-763",
+        "test-93",
+        "train-72",
+        "train-2782"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t002",
+      "source_id": "train-10",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-10"
+      ],
+      "retrieved_doc_ids": [
+        "train-2918",
+        "train-4920",
+        "validation-858",
+        "test-165",
+        "train-5260",
+        "train-10",
+        "train-2968",
+        "test-1385",
+        "train-6461",
+        "test-1752"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t002",
+      "source_id": "train-10",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-10"
+      ],
+      "retrieved_doc_ids": [
+        "train-3674",
+        "validation-858",
+        "test-165",
+        "test-1944",
+        "train-10",
+        "train-5260",
+        "train-6250",
+        "train-6461",
+        "test-1752",
+        "validation-975"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t003",
+      "source_id": "train-1741",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-1741"
+      ],
+      "retrieved_doc_ids": [
+        "validation-899",
+        "validation-975",
+        "train-4897",
+        "test-156",
+        "train-5967",
+        "train-3674",
+        "train-6408",
+        "train-2184",
+        "train-5100",
+        "test-1293"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t003",
+      "source_id": "train-1741",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-1741"
+      ],
+      "retrieved_doc_ids": [
+        "train-3674",
+        "validation-899",
+        "train-5967",
+        "validation-975",
+        "train-4840",
+        "train-6408",
+        "train-2184",
+        "train-5100",
+        "test-1293",
+        "train-4911"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t004",
+      "source_id": "train-1059",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-1059"
+      ],
+      "retrieved_doc_ids": [
+        "test-168",
+        "train-4538",
+        "train-1059",
+        "train-3986",
+        "train-2395",
+        "train-6594",
+        "test-1157",
+        "train-4182",
+        "train-823",
+        "validation-221"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t004",
+      "source_id": "train-1059",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-1059"
+      ],
+      "retrieved_doc_ids": [
+        "train-3674",
+        "train-4538",
+        "train-1059",
+        "train-3681",
+        "train-2395",
+        "train-5260",
+        "train-5443",
+        "train-3665",
+        "train-4182",
+        "validation-221"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t005",
+      "source_id": "train-5787",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-5787"
+      ],
+      "retrieved_doc_ids": [
+        "train-2090",
+        "validation-121",
+        "train-4465",
+        "train-5499",
+        "train-3112",
+        "validation-348",
+        "train-3954",
+        "train-4182",
+        "train-234",
+        "train-6594"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t005",
+      "source_id": "train-5787",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-5787"
+      ],
+      "retrieved_doc_ids": [
+        "train-920",
+        "train-2090",
+        "validation-975",
+        "test-1307",
+        "train-5499",
+        "train-3112",
+        "train-4465",
+        "train-3674",
+        "train-4182",
+        "train-234"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t006",
+      "source_id": "train-6824",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-6824"
+      ],
+      "retrieved_doc_ids": [
+        "train-6824",
+        "train-5461",
+        "train-2043",
+        "train-1286",
+        "test-1389",
+        "train-2401",
+        "train-2911",
+        "test-719",
+        "train-2247",
+        "validation-968"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t006",
+      "source_id": "train-6824",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-6824"
+      ],
+      "retrieved_doc_ids": [
+        "train-6824",
+        "train-1286",
+        "train-2043",
+        "train-5461",
+        "train-2911",
+        "train-2401",
+        "train-4810",
+        "validation-968",
+        "train-2247",
+        "train-562"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t007",
+      "source_id": "train-5411",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-5411"
+      ],
+      "retrieved_doc_ids": [
+        "train-2968",
+        "train-3738",
+        "train-5260",
+        "train-5618",
+        "test-103",
+        "train-6745",
+        "test-1944",
+        "train-3314",
+        "train-5403",
+        "train-817"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t007",
+      "source_id": "train-5411",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-5411"
+      ],
+      "retrieved_doc_ids": [
+        "train-3674",
+        "train-3738",
+        "train-3681",
+        "train-5618",
+        "train-4840",
+        "train-6745",
+        "train-3314",
+        "train-5260",
+        "train-817",
+        "validation-192"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t008",
+      "source_id": "train-6360",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-6360"
+      ],
+      "retrieved_doc_ids": [
+        "train-6360",
+        "train-2415",
+        "test-1659",
+        "train-4395",
+        "train-4788",
+        "train-4829",
+        "train-643",
+        "train-3714",
+        "test-434",
+        "train-2968"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t008",
+      "source_id": "train-6360",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-6360"
+      ],
+      "retrieved_doc_ids": [
+        "train-2415",
+        "train-6360",
+        "train-3674",
+        "train-4788",
+        "train-4840",
+        "train-643",
+        "train-3714",
+        "train-3986",
+        "train-2827",
+        "test-1659"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t009",
+      "source_id": "train-2700",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-2700"
+      ],
+      "retrieved_doc_ids": [
+        "train-4603",
+        "train-5260",
+        "train-2968",
+        "train-573",
+        "test-168",
+        "train-1944",
+        "train-2959",
+        "validation-731",
+        "train-6250",
+        "validation-907"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t009",
+      "source_id": "train-2700",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-2700"
+      ],
+      "retrieved_doc_ids": [
+        "train-4603",
+        "validation-731",
+        "test-2011",
+        "train-573",
+        "train-1944",
+        "train-3674",
+        "train-1155",
+        "train-2959",
+        "train-5260",
+        "validation-907"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t010",
+      "source_id": "train-2484",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-2484"
+      ],
+      "retrieved_doc_ids": [
+        "test-799",
+        "validation-370",
+        "train-4402",
+        "train-965",
+        "train-1640",
+        "train-5026",
+        "test-822",
+        "train-1222",
+        "test-1966",
+        "train-4109"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t010",
+      "source_id": "train-2484",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-2484"
+      ],
+      "retrieved_doc_ids": [
+        "test-799",
+        "train-3674",
+        "train-965",
+        "validation-370",
+        "train-4402",
+        "train-5026",
+        "test-822",
+        "validation-588",
+        "train-4109",
+        "train-6317"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t011",
+      "source_id": "train-2162",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-2162"
+      ],
+      "retrieved_doc_ids": [
+        "train-2884",
+        "train-2162",
+        "train-6340",
+        "train-2129",
+        "train-2968",
+        "train-5664",
+        "train-6480",
+        "test-288",
+        "train-2289",
+        "test-168"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t011",
+      "source_id": "train-2162",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-2162"
+      ],
+      "retrieved_doc_ids": [
+        "train-2884",
+        "train-2162",
+        "train-3674",
+        "test-168",
+        "train-2129",
+        "train-5664",
+        "validation-975",
+        "train-2289",
+        "train-6340",
+        "train-2968"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t012",
+      "source_id": "train-6615",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-6615"
+      ],
+      "retrieved_doc_ids": [
+        "train-6615",
+        "test-1874",
+        "train-3927",
+        "train-411",
+        "train-4313",
+        "test-1194",
+        "test-93",
+        "train-1452",
+        "train-4013",
+        "train-6146"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t012",
+      "source_id": "train-6615",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-6615"
+      ],
+      "retrieved_doc_ids": [
+        "test-1874",
+        "train-6317",
+        "train-4313",
+        "train-700",
+        "test-1194",
+        "train-6751",
+        "train-1452",
+        "train-3927",
+        "test-93",
+        "train-6146"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t013",
+      "source_id": "train-1152",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-1152"
+      ],
+      "retrieved_doc_ids": [
+        "train-1152",
+        "train-3674",
+        "test-1659",
+        "train-5677",
+        "train-2415",
+        "train-4890",
+        "test-1103",
+        "test-1944",
+        "train-5568",
+        "train-708"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t013",
+      "source_id": "train-1152",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-1152"
+      ],
+      "retrieved_doc_ids": [
+        "train-1152",
+        "train-3674",
+        "train-5677",
+        "train-6340",
+        "train-2415",
+        "train-4890",
+        "test-1103",
+        "train-4840",
+        "train-5568",
+        "validation-20"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t014",
+      "source_id": "train-5730",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-5730"
+      ],
+      "retrieved_doc_ids": [
+        "train-5222",
+        "test-93",
+        "train-1495",
+        "train-679",
+        "validation-763",
+        "test-1369",
+        "train-4332",
+        "train-6317",
+        "test-860",
+        "train-517"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t014",
+      "source_id": "train-5730",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-5730"
+      ],
+      "retrieved_doc_ids": [
+        "test-1369",
+        "train-1495",
+        "train-6317",
+        "test-93",
+        "train-679",
+        "train-4332",
+        "validation-763",
+        "train-4939",
+        "train-517",
+        "test-860"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t015",
+      "source_id": "train-2978",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-2978"
+      ],
+      "retrieved_doc_ids": [
+        "test-160",
+        "train-4840",
+        "validation-660",
+        "train-5000",
+        "train-6250",
+        "test-1166",
+        "test-647",
+        "test-723",
+        "train-2657",
+        "train-4134"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t015",
+      "source_id": "train-2978",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-2978"
+      ],
+      "retrieved_doc_ids": [
+        "test-160",
+        "train-4840",
+        "validation-660",
+        "train-5000",
+        "train-6250",
+        "test-1166",
+        "test-647",
+        "train-2657",
+        "train-4911",
+        "train-4134"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t016",
+      "source_id": "train-18",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-18"
+      ],
+      "retrieved_doc_ids": [
+        "test-160",
+        "train-5473",
+        "test-647",
+        "train-1833",
+        "train-1993",
+        "train-6317",
+        "test-93",
+        "train-18",
+        "train-330",
+        "train-5420"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t016",
+      "source_id": "train-18",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-18"
+      ],
+      "retrieved_doc_ids": [
+        "train-3674",
+        "train-5473",
+        "train-1833",
+        "train-6317",
+        "test-647",
+        "train-1993",
+        "test-160",
+        "train-18",
+        "train-330",
+        "train-3986"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t017",
+      "source_id": "train-3565",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-3565"
+      ],
+      "retrieved_doc_ids": [
+        "train-1314",
+        "train-3565",
+        "train-5091",
+        "train-3954",
+        "train-3984",
+        "test-1986",
+        "validation-45",
+        "test-913",
+        "train-2089",
+        "train-1832"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t017",
+      "source_id": "train-3565",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-3565"
+      ],
+      "retrieved_doc_ids": [
+        "train-3018",
+        "train-1314",
+        "train-4002",
+        "train-3565",
+        "train-6340",
+        "train-3674",
+        "train-3984",
+        "train-741",
+        "validation-45",
+        "train-2089"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t018",
+      "source_id": "train-2712",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-2712"
+      ],
+      "retrieved_doc_ids": [
+        "test-964",
+        "test-647",
+        "train-2712",
+        "train-2783",
+        "train-990",
+        "test-1944",
+        "train-6602",
+        "test-1382",
+        "validation-913",
+        "train-2400"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t018",
+      "source_id": "train-2712",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-2712"
+      ],
+      "retrieved_doc_ids": [
+        "train-2712",
+        "train-990",
+        "test-647",
+        "train-2783",
+        "train-6602",
+        "validation-975",
+        "train-3674",
+        "validation-913",
+        "test-1944",
+        "train-238"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t019",
+      "source_id": "train-2551",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-2551"
+      ],
+      "retrieved_doc_ids": [
+        "test-444",
+        "train-5604",
+        "test-1611",
+        "train-6240",
+        "train-6272",
+        "train-1383",
+        "train-3108",
+        "train-3982",
+        "test-1148",
+        "test-1657"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t019",
+      "source_id": "train-2551",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-2551"
+      ],
+      "retrieved_doc_ids": [
+        "train-5604",
+        "test-1611",
+        "train-6240",
+        "train-1383",
+        "train-3108",
+        "train-5612",
+        "train-3982",
+        "train-6272",
+        "train-6985",
+        "train-2041"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t020",
+      "source_id": "train-5574",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-5574"
+      ],
+      "retrieved_doc_ids": [
+        "train-1201",
+        "train-4840",
+        "validation-576",
+        "train-5574",
+        "train-1403",
+        "train-4185",
+        "train-939",
+        "validation-975",
+        "train-2692",
+        "train-6147"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t020",
+      "source_id": "train-5574",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-5574"
+      ],
+      "retrieved_doc_ids": [
+        "train-1201",
+        "train-3674",
+        "validation-576",
+        "train-4840",
+        "train-5574",
+        "train-1403",
+        "validation-975",
+        "test-1944",
+        "train-939",
+        "train-4689"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t021",
+      "source_id": "train-2209",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-2209"
+      ],
+      "retrieved_doc_ids": [
+        "train-2233",
+        "train-5418",
+        "train-6674",
+        "train-6614",
+        "validation-921",
+        "test-929",
+        "test-93",
+        "train-2356",
+        "train-2674",
+        "validation-763"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t021",
+      "source_id": "train-2209",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-2209"
+      ],
+      "retrieved_doc_ids": [
+        "train-6674",
+        "train-858",
+        "train-6614",
+        "validation-921",
+        "test-929",
+        "train-6317",
+        "train-2233",
+        "train-2674",
+        "train-4939",
+        "train-4840"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t022",
+      "source_id": "train-5871",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-5871"
+      ],
+      "retrieved_doc_ids": [
+        "train-562",
+        "train-5871",
+        "test-647",
+        "train-2959",
+        "train-4840",
+        "train-6203",
+        "train-4924",
+        "train-823",
+        "train-403",
+        "train-6594"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t022",
+      "source_id": "train-5871",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-5871"
+      ],
+      "retrieved_doc_ids": [
+        "test-647",
+        "train-5871",
+        "validation-571",
+        "train-2959",
+        "train-4840",
+        "train-6203",
+        "validation-680",
+        "train-3674",
+        "train-4924",
+        "train-403"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t023",
+      "source_id": "train-2906",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-2906"
+      ],
+      "retrieved_doc_ids": [
+        "train-2906",
+        "train-6480",
+        "train-2527",
+        "train-823",
+        "test-647",
+        "train-1598",
+        "train-1858",
+        "validation-975",
+        "train-1493",
+        "train-5236"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t023",
+      "source_id": "train-2906",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-2906"
+      ],
+      "retrieved_doc_ids": [
+        "train-2906",
+        "train-3674",
+        "train-2527",
+        "validation-975",
+        "train-1332",
+        "train-1598",
+        "train-1858",
+        "train-4840",
+        "test-647",
+        "train-5236"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t024",
+      "source_id": "train-4582",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-4582"
+      ],
+      "retrieved_doc_ids": [
+        "train-665",
+        "test-647",
+        "train-2575",
+        "test-937",
+        "train-4293",
+        "train-4395",
+        "train-3205",
+        "train-6317",
+        "test-1659",
+        "validation-718"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t024",
+      "source_id": "train-4582",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-4582"
+      ],
+      "retrieved_doc_ids": [
+        "train-665",
+        "test-647",
+        "train-2575",
+        "test-937",
+        "train-4293",
+        "train-6317",
+        "train-3205",
+        "train-4395",
+        "validation-680",
+        "validation-718"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t025",
+      "source_id": "train-1710",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-1710"
+      ],
+      "retrieved_doc_ids": [
+        "test-239",
+        "validation-540",
+        "test-466",
+        "validation-763",
+        "train-1826",
+        "train-3280",
+        "train-4570",
+        "validation-552",
+        "test-93",
+        "train-2311"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t025",
+      "source_id": "train-1710",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-1710"
+      ],
+      "retrieved_doc_ids": [
+        "test-239",
+        "validation-540",
+        "test-466",
+        "train-6317",
+        "train-1826",
+        "train-4570",
+        "test-93",
+        "validation-552",
+        "train-2311",
+        "validation-763"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t026",
+      "source_id": "train-6394",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-6394"
+      ],
+      "retrieved_doc_ids": [
+        "train-1222",
+        "train-6394",
+        "test-93",
+        "train-1578",
+        "train-1416",
+        "train-4570",
+        "train-400",
+        "train-4840",
+        "test-647",
+        "train-5304"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t026",
+      "source_id": "train-6394",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-6394"
+      ],
+      "retrieved_doc_ids": [
+        "train-6317",
+        "train-6394",
+        "train-1578",
+        "train-4840",
+        "train-1416",
+        "train-4570",
+        "test-1944",
+        "train-400",
+        "train-5304",
+        "train-562"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t027",
+      "source_id": "train-4893",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-4893"
+      ],
+      "retrieved_doc_ids": [
+        "test-239",
+        "train-162",
+        "test-848",
+        "train-3358",
+        "test-93",
+        "train-4580",
+        "train-3773",
+        "train-4753",
+        "train-1232",
+        "train-6875"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t027",
+      "source_id": "train-4893",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-4893"
+      ],
+      "retrieved_doc_ids": [
+        "train-1935",
+        "test-239",
+        "train-162",
+        "test-848",
+        "train-6317",
+        "test-93",
+        "train-4580",
+        "train-4753",
+        "train-5150",
+        "train-4570"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t028",
+      "source_id": "train-5481",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-5481"
+      ],
+      "retrieved_doc_ids": [
+        "test-1457",
+        "train-5481",
+        "train-1111",
+        "train-5222",
+        "test-1688",
+        "train-5884",
+        "train-1398",
+        "train-247",
+        "test-1607",
+        "train-6507"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t028",
+      "source_id": "train-5481",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-5481"
+      ],
+      "retrieved_doc_ids": [
+        "test-1457",
+        "train-5481",
+        "test-93",
+        "train-5222",
+        "train-5884",
+        "train-6317",
+        "test-1688",
+        "train-247",
+        "test-1607",
+        "train-3236"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t029",
+      "source_id": "train-187",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-187"
+      ],
+      "retrieved_doc_ids": [
+        "train-4880",
+        "validation-441",
+        "train-2227",
+        "train-6317",
+        "validation-543",
+        "test-478",
+        "validation-871",
+        "train-3358",
+        "train-4770",
+        "test-93"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t029",
+      "source_id": "train-187",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-187"
+      ],
+      "retrieved_doc_ids": [
+        "train-4880",
+        "validation-441",
+        "train-2227",
+        "train-6317",
+        "validation-543",
+        "test-478",
+        "test-937",
+        "train-4770",
+        "test-14",
+        "train-69"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t030",
+      "source_id": "train-3203",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-3203"
+      ],
+      "retrieved_doc_ids": [
+        "train-5180",
+        "train-4399",
+        "validation-680",
+        "test-937",
+        "validation-247",
+        "train-3939",
+        "train-6359",
+        "train-3803",
+        "train-865",
+        "train-2535"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t030",
+      "source_id": "train-3203",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-3203"
+      ],
+      "retrieved_doc_ids": [
+        "train-5180",
+        "train-4399",
+        "validation-680",
+        "test-937",
+        "validation-247",
+        "train-4851",
+        "train-6359",
+        "train-4810",
+        "train-865",
+        "test-647"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t031",
+      "source_id": "train-4928",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-4928"
+      ],
+      "retrieved_doc_ids": [
+        "train-3803",
+        "train-4928",
+        "test-647",
+        "train-4264",
+        "train-2763",
+        "train-3954",
+        "test-1138",
+        "train-6480",
+        "train-2364",
+        "validation-731"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t031",
+      "source_id": "train-4928",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-4928"
+      ],
+      "retrieved_doc_ids": [
+        "train-5305",
+        "train-3803",
+        "train-4928",
+        "test-647",
+        "train-4264",
+        "train-2763",
+        "validation-731",
+        "test-1138",
+        "test-2011",
+        "train-2364"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t032",
+      "source_id": "train-1610",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-1610"
+      ],
+      "retrieved_doc_ids": [
+        "test-282",
+        "train-1610",
+        "train-4840",
+        "test-702",
+        "validation-411",
+        "train-1095",
+        "train-4058",
+        "train-1840",
+        "validation-453",
+        "train-2184"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t032",
+      "source_id": "train-1610",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-1610"
+      ],
+      "retrieved_doc_ids": [
+        "train-1610",
+        "train-3674",
+        "test-702",
+        "train-4840",
+        "train-4058",
+        "train-5486",
+        "train-1840",
+        "validation-680",
+        "test-282",
+        "train-3681"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t033",
+      "source_id": "train-4676",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-4676"
+      ],
+      "retrieved_doc_ids": [
+        "train-4676",
+        "train-6594",
+        "train-6049",
+        "train-6250",
+        "test-239",
+        "train-3957",
+        "train-23",
+        "validation-27",
+        "train-1676",
+        "test-1302"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t033",
+      "source_id": "train-4676",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-4676"
+      ],
+      "retrieved_doc_ids": [
+        "train-4676",
+        "validation-680",
+        "train-3681",
+        "train-6049",
+        "train-3957",
+        "train-6250",
+        "train-5357",
+        "train-6594",
+        "validation-27",
+        "test-1302"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t034",
+      "source_id": "train-6066",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-6066"
+      ],
+      "retrieved_doc_ids": [
+        "test-647",
+        "train-6066",
+        "train-3674",
+        "validation-293",
+        "train-1997",
+        "train-6317",
+        "test-93",
+        "train-727",
+        "train-165",
+        "validation-763"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t034",
+      "source_id": "train-6066",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-6066"
+      ],
+      "retrieved_doc_ids": [
+        "train-3674",
+        "train-6066",
+        "train-3681",
+        "validation-293",
+        "train-1997",
+        "train-6317",
+        "test-647",
+        "train-727",
+        "train-165",
+        "train-4911"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t035",
+      "source_id": "train-2846",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-2846"
+      ],
+      "retrieved_doc_ids": [
+        "train-3986",
+        "test-647",
+        "train-5307",
+        "train-1302",
+        "validation-370",
+        "train-861",
+        "validation-188",
+        "train-2282",
+        "train-4840",
+        "train-4402"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t035",
+      "source_id": "train-2846",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-2846"
+      ],
+      "retrieved_doc_ids": [
+        "train-3986",
+        "train-3674",
+        "train-5307",
+        "train-1302",
+        "train-4840",
+        "train-861",
+        "test-647",
+        "train-2282",
+        "test-1157",
+        "train-5983"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t036",
+      "source_id": "train-5886",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-5886"
+      ],
+      "retrieved_doc_ids": [
+        "train-4840",
+        "validation-576",
+        "test-913",
+        "train-496",
+        "train-3172",
+        "validation-975",
+        "test-1107",
+        "train-3437",
+        "test-1944",
+        "validation-889"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t036",
+      "source_id": "train-5886",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-5886"
+      ],
+      "retrieved_doc_ids": [
+        "train-4840",
+        "validation-576",
+        "train-3674",
+        "train-496",
+        "train-3172",
+        "validation-975",
+        "test-1944",
+        "train-3437",
+        "train-4911",
+        "validation-889"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t037",
+      "source_id": "train-6217",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-6217"
+      ],
+      "retrieved_doc_ids": [
+        "train-3883",
+        "train-4840",
+        "train-5559",
+        "train-6485",
+        "test-1944",
+        "train-3734",
+        "train-4890",
+        "train-5260",
+        "train-5590",
+        "train-6940"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t037",
+      "source_id": "train-6217",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-6217"
+      ],
+      "retrieved_doc_ids": [
+        "train-3883",
+        "train-4840",
+        "test-1307",
+        "train-5559",
+        "train-3734",
+        "train-6485",
+        "test-1944",
+        "train-4890",
+        "train-3690",
+        "train-6940"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t038",
+      "source_id": "train-314",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-314"
+      ],
+      "retrieved_doc_ids": [
+        "train-314",
+        "train-5116",
+        "test-1385",
+        "train-583",
+        "test-143",
+        "train-6594",
+        "test-1944",
+        "train-429",
+        "train-4840",
+        "train-3803"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t038",
+      "source_id": "train-314",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-314"
+      ],
+      "retrieved_doc_ids": [
+        "train-314",
+        "train-1807",
+        "train-3674",
+        "train-5116",
+        "train-583",
+        "test-1307",
+        "test-143",
+        "train-2938",
+        "train-429",
+        "train-4840"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t039",
+      "source_id": "train-6820",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-6820"
+      ],
+      "retrieved_doc_ids": [
+        "train-4291",
+        "train-2973",
+        "train-6317",
+        "test-1827",
+        "test-853",
+        "train-1111",
+        "train-2677",
+        "test-11",
+        "train-2328",
+        "train-6507"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t039",
+      "source_id": "train-6820",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-6820"
+      ],
+      "retrieved_doc_ids": [
+        "train-4291",
+        "train-2973",
+        "train-6317",
+        "test-11",
+        "test-1827",
+        "test-853",
+        "train-2677",
+        "train-2328",
+        "train-4840",
+        "train-4939"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t040",
+      "source_id": "train-614",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-614"
+      ],
+      "retrieved_doc_ids": [
+        "train-614",
+        "train-4284",
+        "train-6614",
+        "train-3454",
+        "test-946",
+        "train-5496",
+        "train-625",
+        "test-53",
+        "train-4256",
+        "train-5418"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t040",
+      "source_id": "train-614",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-614"
+      ],
+      "retrieved_doc_ids": [
+        "train-6614",
+        "train-614",
+        "train-3454",
+        "train-5496",
+        "train-4284",
+        "test-946",
+        "test-53",
+        "train-6317",
+        "test-93",
+        "test-239"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t041",
+      "source_id": "train-4187",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-4187"
+      ],
+      "retrieved_doc_ids": [
+        "train-144",
+        "train-6317",
+        "train-4570",
+        "train-5971",
+        "train-6572",
+        "test-93",
+        "train-1723",
+        "test-1827",
+        "train-3358",
+        "test-239"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t041",
+      "source_id": "train-4187",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-4187"
+      ],
+      "retrieved_doc_ids": [
+        "train-144",
+        "train-6317",
+        "train-4570",
+        "train-5971",
+        "test-93",
+        "train-1723",
+        "test-1827",
+        "train-3358",
+        "test-239",
+        "train-1334"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t042",
+      "source_id": "train-1136",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-1136"
+      ],
+      "retrieved_doc_ids": [
+        "train-4395",
+        "train-6269",
+        "train-1136",
+        "train-6729",
+        "train-1651",
+        "train-2291",
+        "train-5170",
+        "validation-588",
+        "train-3803",
+        "train-881"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t042",
+      "source_id": "train-1136",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-1136"
+      ],
+      "retrieved_doc_ids": [
+        "train-3681",
+        "train-6269",
+        "train-1136",
+        "train-6317",
+        "test-2011",
+        "train-1651",
+        "train-2938",
+        "train-5170",
+        "train-4395",
+        "train-881"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t043",
+      "source_id": "train-4121",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-4121"
+      ],
+      "retrieved_doc_ids": [
+        "train-1944",
+        "train-23",
+        "train-5871",
+        "train-6317",
+        "test-1865",
+        "test-647",
+        "train-3674",
+        "train-579",
+        "test-1373",
+        "train-5341"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t043",
+      "source_id": "train-4121",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-4121"
+      ],
+      "retrieved_doc_ids": [
+        "train-1944",
+        "train-3674",
+        "test-647",
+        "train-5871",
+        "test-1865",
+        "train-3343",
+        "train-579",
+        "validation-680",
+        "test-1373",
+        "train-4840"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t044",
+      "source_id": "train-204",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-204"
+      ],
+      "retrieved_doc_ids": [
+        "test-491",
+        "train-4939",
+        "train-204",
+        "train-4840",
+        "train-2601",
+        "train-4570",
+        "train-5120",
+        "train-5274",
+        "train-6317",
+        "validation-545"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t044",
+      "source_id": "train-204",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-204"
+      ],
+      "retrieved_doc_ids": [
+        "test-491",
+        "train-4840",
+        "train-204",
+        "train-4939",
+        "train-2601",
+        "train-3674",
+        "train-5120",
+        "train-6317",
+        "train-6250",
+        "validation-545"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t045",
+      "source_id": "train-4966",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-4966"
+      ],
+      "retrieved_doc_ids": [
+        "test-319",
+        "train-4840",
+        "test-827",
+        "train-4911",
+        "train-5999",
+        "train-6317",
+        "test-943",
+        "validation-975",
+        "train-1007",
+        "train-3674"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t045",
+      "source_id": "train-4966",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-4966"
+      ],
+      "retrieved_doc_ids": [
+        "test-319",
+        "train-4840",
+        "test-827",
+        "train-3674",
+        "train-5999",
+        "train-6317",
+        "test-943",
+        "train-4911",
+        "train-1007",
+        "validation-975"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t046",
+      "source_id": "train-3648",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-3648"
+      ],
+      "retrieved_doc_ids": [
+        "train-1991",
+        "train-6594",
+        "train-4356",
+        "train-5736",
+        "train-1060",
+        "train-6317",
+        "test-93",
+        "train-1944",
+        "test-168",
+        "train-6807"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t046",
+      "source_id": "train-3648",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-3648"
+      ],
+      "retrieved_doc_ids": [
+        "train-6234",
+        "train-1332",
+        "train-1991",
+        "train-3681",
+        "train-4356",
+        "train-4840",
+        "train-1060",
+        "train-3674",
+        "test-2011",
+        "train-1944"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t047",
+      "source_id": "train-5369",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-5369"
+      ],
+      "retrieved_doc_ids": [
+        "test-647",
+        "train-4509",
+        "test-611",
+        "validation-370",
+        "test-523",
+        "train-1640",
+        "test-168",
+        "train-435",
+        "train-4840",
+        "train-485"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t047",
+      "source_id": "train-5369",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-5369"
+      ],
+      "retrieved_doc_ids": [
+        "train-3674",
+        "train-4509",
+        "test-611",
+        "train-4840",
+        "test-523",
+        "test-647",
+        "train-435",
+        "validation-975",
+        "test-1307",
+        "train-485"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t048",
+      "source_id": "train-560",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-560"
+      ],
+      "retrieved_doc_ids": [
+        "train-2678",
+        "train-5091",
+        "validation-172",
+        "test-647",
+        "train-6775",
+        "train-2801",
+        "train-4395",
+        "test-576",
+        "train-823",
+        "train-5341"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t048",
+      "source_id": "train-560",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-560"
+      ],
+      "retrieved_doc_ids": [
+        "train-5091",
+        "validation-172",
+        "train-4395",
+        "train-6775",
+        "train-2184",
+        "train-2801",
+        "test-576",
+        "train-823",
+        "train-5341",
+        "validation-26"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t049",
+      "source_id": "train-2288",
+      "variant": "original",
+      "gold_doc_ids": [
+        "train-2288"
+      ],
+      "retrieved_doc_ids": [
+        "train-322",
+        "train-2985",
+        "validation-254",
+        "test-647",
+        "train-2288",
+        "test-913",
+        "train-3984",
+        "train-1222",
+        "train-6424",
+        "train-2089"
+      ],
+      "error_type": null
+    },
+    {
+      "id": "t049",
+      "source_id": "train-2288",
+      "variant": "curly_quotes",
+      "gold_doc_ids": [
+        "train-2288"
+      ],
+      "retrieved_doc_ids": [
+        "train-322",
+        "validation-254",
+        "train-2985",
+        "train-2288",
+        "train-3674",
+        "train-3984",
+        "train-4840",
+        "test-647",
+        "train-6424",
+        "train-2089"
+      ],
+      "error_type": null
+    }
+  ]
+}

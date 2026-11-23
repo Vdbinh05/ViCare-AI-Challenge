@@ -1,0 +1,298 @@
+{
+  "set": "dev100",
+  "created_utc": "2026-11-23T02:26:31.659849+00:00",
+  "metrics": {
+    "locked": {
+      "n": 100,
+      "errors": 0,
+      "coverage": 1.0,
+      "candidate_union_coverage": 0.82,
+      "candidate50_document_coverage": 0.74,
+      "recall": {
+        "@1": 0.38,
+        "@3": 0.52,
+        "@5": 0.55,
+        "@10": 0.6
+      },
+      "hit_counts": {
+        "dense_rank": {
+          "@1": 37,
+          "@3": 47,
+          "@5": 51,
+          "@10": 55,
+          "@20": 59,
+          "@50": 71
+        },
+        "bm25_rank": {
+          "@1": 38,
+          "@3": 46,
+          "@5": 48,
+          "@10": 58,
+          "@20": 62,
+          "@50": 70
+        },
+        "rrf_rank": {
+          "@1": 38,
+          "@3": 52,
+          "@5": 55,
+          "@10": 60,
+          "@20": 68,
+          "@50": 74
+        },
+        "rank": {
+          "@1": 38,
+          "@3": 52,
+          "@5": 55,
+          "@10": 60,
+          "@20": 68,
+          "@50": 74
+        }
+      },
+      "error_groups_at_5": {
+        "gold_at_5": 55,
+        "inside_50_outside_5": 19,
+        "outside_union": 18,
+        "removed_before_50": 8
+      },
+      "mean_dense_duplicate_chunks": 3.68,
+      "mean_candidate50_documents": 50,
+      "mean_candidate50_chunks": 63.79,
+      "latency_ms": {
+        "mean": 148.011,
+        "median": 107.608,
+        "p95": 324.134
+      },
+      "peak_process_rss_mib": 1588.3
+    },
+    "selected": {
+      "n": 100,
+      "errors": 0,
+      "coverage": 1.0,
+      "candidate_union_coverage": 0.82,
+      "candidate50_document_coverage": 0.74,
+      "recall": {
+        "@1": 0.38,
+        "@3": 0.52,
+        "@5": 0.55,
+        "@10": 0.6
+      },
+      "hit_counts": {
+        "dense_rank": {
+          "@1": 37,
+          "@3": 47,
+          "@5": 51,
+          "@10": 55,
+          "@20": 59,
+          "@50": 71
+        },
+        "bm25_rank": {
+          "@1": 38,
+          "@3": 46,
+          "@5": 48,
+          "@10": 58,
+          "@20": 62,
+          "@50": 70
+        },
+        "rrf_rank": {
+          "@1": 38,
+          "@3": 52,
+          "@5": 55,
+          "@10": 60,
+          "@20": 68,
+          "@50": 74
+        },
+        "rank": {
+          "@1": 38,
+          "@3": 52,
+          "@5": 55,
+          "@10": 60,
+          "@20": 68,
+          "@50": 74
+        }
+      },
+      "error_groups_at_5": {
+        "gold_at_5": 55,
+        "inside_50_outside_5": 19,
+        "outside_union": 18,
+        "removed_before_50": 8
+      },
+      "mean_dense_duplicate_chunks": 3.65,
+      "mean_candidate50_documents": 50,
+      "mean_candidate50_chunks": 63.77,
+      "latency_ms": {
+        "mean": 142.503,
+        "median": 99.924,
+        "p95": 340.171
+      },
+      "peak_process_rss_mib": 1588.3
+    },
+    "dense": {
+      "n": 100,
+      "errors": 0,
+      "coverage": 1.0,
+      "candidate_union_coverage": 0.79,
+      "candidate50_document_coverage": 0.7,
+      "recall": {
+        "@1": 0.36,
+        "@3": 0.46,
+        "@5": 0.5,
+        "@10": 0.54
+      },
+      "hit_counts": {
+        "dense_rank": {
+          "@1": 36,
+          "@3": 46,
+          "@5": 50,
+          "@10": 54,
+          "@20": 58,
+          "@50": 70
+        },
+        "bm25_rank": {
+          "@1": 0,
+          "@3": 0,
+          "@5": 0,
+          "@10": 0,
+          "@20": 0,
+          "@50": 0
+        },
+        "rrf_rank": {
+          "@1": 0,
+          "@3": 0,
+          "@5": 0,
+          "@10": 0,
+          "@20": 0,
+          "@50": 0
+        },
+        "rank": {
+          "@1": 36,
+          "@3": 46,
+          "@5": 50,
+          "@10": 54,
+          "@20": 58,
+          "@50": 70
+        }
+      },
+      "error_groups_at_5": {
+        "outside_union": 21,
+        "removed_before_50": 9,
+        "gold_at_5": 50,
+        "inside_50_outside_5": 20
+      },
+      "mean_dense_duplicate_chunks": 5.07,
+      "mean_candidate50_documents": 50,
+      "mean_candidate50_chunks": 68.19,
+      "latency_ms": {
+        "mean": 23.28,
+        "median": 20.793,
+        "p95": 33.049
+      },
+      "peak_process_rss_mib": 1588.3
+    },
+    "hybrid_v2": {
+      "n": 100,
+      "errors": 0,
+      "coverage": 1.0,
+      "candidate_union_coverage": 0.83,
+      "candidate50_document_coverage": 0.74,
+      "recall": {
+        "@1": 0.37,
+        "@3": 0.51,
+        "@5": 0.55,
+        "@10": 0.59
+      },
+      "hit_counts": {
+        "dense_rank": {
+          "@1": 36,
+          "@3": 46,
+          "@5": 50,
+          "@10": 54,
+          "@20": 58,
+          "@50": 70
+        },
+        "bm25_rank": {
+          "@1": 38,
+          "@3": 46,
+          "@5": 48,
+          "@10": 58,
+          "@20": 62,
+          "@50": 70
+        },
+        "rrf_rank": {
+          "@1": 37,
+          "@3": 51,
+          "@5": 55,
+          "@10": 59,
+          "@20": 67,
+          "@50": 74
+        },
+        "rank": {
+          "@1": 37,
+          "@3": 51,
+          "@5": 55,
+          "@10": 59,
+          "@20": 67,
+          "@50": 74
+        }
+      },
+      "error_groups_at_5": {
+        "inside_50_outside_5": 19,
+        "gold_at_5": 55,
+        "outside_union": 17,
+        "removed_before_50": 9
+      },
+      "mean_dense_duplicate_chunks": 3.81,
+      "mean_candidate50_documents": 50,
+      "mean_candidate50_chunks": 63.68,
+      "latency_ms": {
+        "mean": 153.03,
+        "median": 107.064,
+        "p95": 344.114
+      },
+      "peak_process_rss_mib": 1588.3
+    }
+  },
+  "aliases_same_invocation": {},
+  "metadata": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.11.14",
+    "packages": {
+      "chromadb": "1.0.20",
+      "sentence-transformers": "3.4.1",
+      "torch": "2.7.1+cpu",
+      "numpy": "1.26.4"
+    },
+    "e5": "intfloat/multilingual-e5-small",
+    "e5_revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "e5_device": "cpu",
+    "torch_threads": 4,
+    "openblas_threads_env": "1",
+    "dataset_revision": "d90a62deedfc822a15de3f35535bb41474e4d3f4",
+    "corpus_sha256": "35902972d43e0841495d6f920901c99146d08e7e745cb5670c76d3d9f367ea87",
+    "documents": 9895,
+    "chunks": 11227,
+    "mapping_errors": 0,
+    "index_load_and_validation_seconds": 27.729,
+    "candidate_units": "Dense standalone HNSW100 chunks; Hybrid HNSW200 -> sorted 80 chunks, BM25 80 documents, RRF 40 equal weights. Candidate50 = first 50 distinct documents from this ranking and every indexed passage of those documents.",
+    "expected_count": 100,
+    "selection": "exact",
+    "order": "round-robin rotation of methods for each question",
+    "budgets_by_method": {
+      "dense": "HNSW100 chunks",
+      "hybrid_v2": "HNSW80 -> 80 chunks, BM25 80 documents",
+      "locked": "HNSW200 -> 80 chunks, BM25 80 documents",
+      "selected": "exact; depth 200 -> 80 chunks, BM25 80 documents"
+    },
+    "warmup": 3,
+    "query_tokens": {
+      "n": 100,
+      "effective_limit": 512,
+      "includes_prefix_and_special_tokens": true,
+      "min": 14,
+      "p50": 23.0,
+      "p95": 82.19999999999999,
+      "max": 270,
+      "clipped": 0,
+      "fraction_clipped": 0.0
+    }
+  }
+}

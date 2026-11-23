@@ -1,0 +1,186 @@
+{
+  "passed": true,
+  "model": "qwen3:4b-instruct",
+  "method": "Hybrid",
+  "service_down_and_emergency": "bound loopback port with no listener",
+  "cases": [
+    {
+      "case": "supported",
+      "status": "answered",
+      "reason_code": "SUPPORTED",
+      "sources": [
+        {
+          "number": 1,
+          "doc_id": "train-4308",
+          "chunk_id": "train-4308#0",
+          "cited": true
+        },
+        {
+          "number": 2,
+          "doc_id": "train-3695",
+          "chunk_id": "train-3695#0",
+          "cited": false
+        },
+        {
+          "number": 3,
+          "doc_id": "train-4346",
+          "chunk_id": "train-4346#0",
+          "cited": false
+        },
+        {
+          "number": 4,
+          "doc_id": "validation-539",
+          "chunk_id": "validation-539#0",
+          "cited": false
+        },
+        {
+          "number": 5,
+          "doc_id": "validation-963",
+          "chunk_id": "validation-963#0",
+          "cited": false
+        }
+      ],
+      "latency_ms": 32445.4,
+      "evidence_check": "source_and_measurement_relation_matched",
+      "passed": true
+    },
+    {
+      "case": "out_of_domain",
+      "status": "refused",
+      "reason_code": "OUT_OF_DOMAIN",
+      "sources": [],
+      "latency_ms": 89.6,
+      "evidence_check": null,
+      "passed": true
+    },
+    {
+      "case": "insufficient",
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "sources": [
+        {
+          "number": 1,
+          "doc_id": "train-6779",
+          "chunk_id": "train-6779#0",
+          "cited": false
+        },
+        {
+          "number": 2,
+          "doc_id": "train-3476",
+          "chunk_id": "train-3476#0",
+          "cited": false
+        },
+        {
+          "number": 3,
+          "doc_id": "test-533",
+          "chunk_id": "test-533#0",
+          "cited": false
+        },
+        {
+          "number": 4,
+          "doc_id": "train-3226",
+          "chunk_id": "train-3226#0",
+          "cited": false
+        },
+        {
+          "number": 5,
+          "doc_id": "train-6572",
+          "chunk_id": "train-6572#0",
+          "cited": false
+        }
+      ],
+      "latency_ms": 11393.4,
+      "evidence_check": null,
+      "passed": true
+    },
+    {
+      "case": "bp_scope",
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "sources": [
+        {
+          "number": 1,
+          "doc_id": "train-5784",
+          "chunk_id": "train-5784#0",
+          "cited": false
+        },
+        {
+          "number": 2,
+          "doc_id": "train-742",
+          "chunk_id": "train-742#0",
+          "cited": false
+        },
+        {
+          "number": 3,
+          "doc_id": "train-3393",
+          "chunk_id": "train-3393#0",
+          "cited": false
+        },
+        {
+          "number": 4,
+          "doc_id": "train-1107",
+          "chunk_id": "train-1107#0",
+          "cited": false
+        },
+        {
+          "number": 5,
+          "doc_id": "train-4308",
+          "chunk_id": "train-4308#0",
+          "cited": false
+        }
+      ],
+      "latency_ms": 82729.2,
+      "evidence_check": null,
+      "passed": true
+    },
+    {
+      "case": "service_down",
+      "status": "unavailable",
+      "reason_code": "GENERATION_FAILURE",
+      "sources": [
+        {
+          "number": 1,
+          "doc_id": "train-4308",
+          "chunk_id": "train-4308#0",
+          "cited": false
+        },
+        {
+          "number": 2,
+          "doc_id": "train-3695",
+          "chunk_id": "train-3695#0",
+          "cited": false
+        },
+        {
+          "number": 3,
+          "doc_id": "train-4346",
+          "chunk_id": "train-4346#0",
+          "cited": false
+        },
+        {
+          "number": 4,
+          "doc_id": "validation-539",
+          "chunk_id": "validation-539#0",
+          "cited": false
+        },
+        {
+          "number": 5,
+          "doc_id": "validation-963",
+          "chunk_id": "validation-963#0",
+          "cited": false
+        }
+      ],
+      "latency_ms": 182.0,
+      "evidence_check": null,
+      "passed": true
+    },
+    {
+      "case": "emergency",
+      "status": "emergency",
+      "reason_code": "EMERGENCY",
+      "sources": [],
+      "latency_ms": 0.2,
+      "evidence_check": null,
+      "passed": true
+    }
+  ]
+}

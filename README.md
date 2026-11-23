@@ -1,26 +1,27 @@
 # ViCare AI
 
-**[Mở bài dự thi của Vương Đình Bình trong Google Colab](https://colab.research.google.com/github/Vdbinh05/ViCare-AI-Challenge/blob/67799e6c09eda71e5d54ec729227afdf737dbd76/ViCare_Vuong_Dinh_Binh.ipynb)** · [Tệp notebook](ViCare_Vuong_Dinh_Binh.ipynb) · [Mã nguồn notebook sử dụng](https://github.com/Vdbinh05/ViCare-AI-Challenge/tree/b9a586aecf9837fdf991dddd55f07d26b43d3b64)
+**[Mở demo có sẵn câu trả lời và nguồn](https://colab.research.google.com/github/Vdbinh05/ViCare-AI-Challenge/blob/ffbc841b5ce371c104b7d6ab4bb16d3c7c8f40f8/ViCare_Linux_CPU_Executed.ipynb#scrollTo=interactive-question)** · **[Chạy notebook trên Google Colab](https://colab.research.google.com/github/Vdbinh05/ViCare-AI-Challenge/blob/ffbc841b5ce371c104b7d6ab4bb16d3c7c8f40f8/ViCare_Vuong_Dinh_Binh.ipynb)**
 
-ViCare tra cứu kiến thức sức khỏe tiếng Việt trong ViHealthQA. Người đọc có thể đối chiếu câu trả lời với đoạn nguồn hoặc xem lý do ViCare từ chối. Đây là demo học thuật của AI Challenge 24h. Dữ liệu có thể đã cũ. Chỉ nhập câu hỏi chung, tránh thông tin định danh, chẩn đoán cá nhân và yêu cầu kê đơn.
+Bài dự thi AI Challenge 24h của Vương Đình Bình. ViCare tìm tài liệu sức khỏe tiếng Việt trong ViHealthQA, kiểm tra bằng chứng và hiển thị đoạn nguồn. Người xem có thể mở demo ngay để đọc câu trả lời, nguồn trích và các lượt từ chối. [Bốn ảnh minh chứng](media/notebook/) · [Bài đăng dự thi](SUBMISSION.md)
 
-## Chạy bản nộp trên Colab
+## Chạy notebook
 
-1. Mở notebook bằng liên kết trên và kết nối runtime Colab Linux miễn phí. Chọn GPU T4 nếu tài khoản còn hạn mức miễn phí. Ghi nhận thiết bị thực tế ở ô đầu.
-2. Chọn **Runtime → Run all**. Notebook lấy mã nguồn ở commit `b9a586a`, cài Python riêng cho ViCare, xây chỉ mục, đo truy xuất, nạp đúng `qwen3:4b-instruct` rồi chấm 10 câu đầu. Các lần chạy lại trong cùng máy ảo dùng được cache. Lần đầu cần mạng tải dữ liệu, thư viện và trọng số.
-3. Xem phần **Ví dụ và các đường lỗi**. Trong **Hỏi ViCare**, gõ một câu hỏi chung và chạy lại ô để xem câu trả lời và nguồn trực tiếp. Phần cuối ghi đường dẫn ZIP chứa JSON/CSV. Tải ZIP và notebook có output trước khi ngắt runtime.
+1. Mở notebook sạch qua liên kết Google Colab phía trên. Bản mặc định yêu cầu GPU. Chọn T4 nếu tài khoản còn hạn mức miễn phí. Để chạy trên CPU, bỏ chọn `REQUIRE_GPU` ngay ô cấu hình.
+2. Chọn **Runtime → Run all**. Notebook khôi phục snapshot source đã kiểm SHA-256, thiết lập môi trường, xây index E5, khởi động Ollama với `qwen3:4b-instruct` rồi chạy các bảng đánh giá. Máy mới cần mạng và thời gian tải dữ liệu, thư viện cùng trọng số.
+3. Ở mục **Nhập câu hỏi và kiểm tra nguồn**, thay nội dung câu hỏi và chạy lại ô **Hỏi ViCare**. Các ô cuối xuất JSON/CSV của chính phiên chạy.
 
-Phiên bản notebook `67799e6c09eda71e5d54ec729227afdf737dbd76` dùng source `b9a586aecf9837fdf991dddd55f07d26b43d3b64`. Bộ dữ liệu, embedding, digest Qwen và cấu hình đánh giá đều được ghi trong notebook. [Báo cáo và trạng thái kiểm chứng](results/colab/REPORT.md) · [Ảnh minh chứng](media/final/) · [Bản bài đăng Facebook](SUBMISSION.md)
+Bản đính kèm có output ghi 15/15 ô thực thi qua IPython trên Linux CPU với cache có sẵn. Bản snapshot này chưa có lượt chạy kiểm chứng trên máy ảo Google. Notebook sạch và notebook có output cùng chứa 58 tệp với SHA-256 gói `21545d22b4ea5816d07775e663414472ceef0ae7cb2bce4ecde11f62195f60f5`. [Mã nguồn đúng phiên bản](https://github.com/Vdbinh05/ViCare-AI-Challenge/tree/ffbc841b5ce371c104b7d6ab4bb16d3c7c8f40f8) · [Biên bản Linux](results/upgrade_20261123/NOTEBOOK_VALIDATION.md)
 
-Trên máy CPU miễn phí của Google, lần dựng mới chỉ mục 11.227 đoạn mất 35 phút 16 giây. Trên cùng Dev100 ở Colab, Recall@5 là 51/100 với Dense, 54/100 với Hybrid v2, 55/100 với Hybrid HNSW đã khóa và 55/100 với Hybrid cosine chính xác. [Bảng Recall, độ phủ và thời gian trên Colab](results/colab/REPORT.md#kiểm-chứng-colab)
+## Kết quả bản nộp
 
-## Từ câu hỏi đến đoạn dẫn nguồn
+| Phương pháp trên cùng Dev100, Linux CPU | Recall@1 | Recall@3 | Recall@5 | Recall@10 |
+|---|---:|---:|---:|---:|
+| Dense HNSW | 36% | 46% | 50% | 54% |
+| Hybrid v2 | 37% | 51% | 55% | 59% |
+| Hybrid HNSW đã khóa | 38% | 52% | 55% | 60% |
+| Hybrid cosine chính xác | 38% | 52% | 55% | 60% |
 
-Kho tra cứu gồm 9.895 tài liệu từ cột đáp án của ViHealthQA sau khi khử trùng, chia thành 11.227 đoạn, mỗi đoạn tối đa 200 từ và chồng lấn 40 từ. E5 mã hóa đoạn với tiền tố `passage:` và câu hỏi với `query:`. Chroma lưu vector chuẩn hóa 384 chiều. Câu hỏi và nhãn gold của bộ đánh giá không tham gia lập chỉ mục.
-
-- **Dense** dùng tìm kiếm vector. **Hybrid** bổ sung BM25 ở cấp tài liệu, xử lý cụm hai từ và tìm kiếm bỏ dấu khi câu hỏi không có dấu. Dense dùng 100 đoạn HNSW ở cả top 5 và top 10. Nhánh ngữ nghĩa của Hybrid tính cosine chính xác trên ma trận E5 hiện có, lấy 200 đoạn rồi giữ 80 theo cosine và ID đoạn. BM25 lấy 80 tài liệu. Sau khử trùng theo document ID, RRF hợp nhất hai thứ hạng với k=40 và trọng số 0,5 mỗi nhánh.
-- Các nhánh cấp cứu và yêu cầu liều dùng cá nhân trả về sớm. Với câu hỏi còn lại, cổng truy xuất dùng cosine Dense tối thiểu 0,86. Đây là ngưỡng minh họa chưa được hiệu chỉnh lâm sàng.
-- Ollama kiểm tra liệu nguồn có trả lời **đúng đối tượng, bệnh cảnh và mối quan hệ được hỏi**. ViCare chọn một câu nguyên văn trong nguồn được duyệt, đối chiếu phạm vi và kiểm tra số trích dẫn trước khi hiển thị. Nếu không đủ bằng chứng, ViCare có thể từ chối. Khi Ollama lỗi sau truy xuất, người dùng vẫn đọc được các đoạn đã tìm thấy.
+Trên 50 câu không dấu đã dùng trong phát triển, khi thêm ngoặc kép cong, Recall@5 tăng từ 7/50 lên 22/50 sau sửa. Câu không bọc ngoặc giữ 22/50. Ở đúng 10 câu đầu Dev, bản cuối trả lời 1 câu, từ chối 8 và chuyển hướng cấp cứu 1. Judge ghi 10/10, gồm cả tám lời từ chối. Bộ demo tổng hợp đạt 6/6. Đây là demo học thuật, không dùng để chẩn đoán hoặc kê đơn. [Báo cáo đầy đủ](results/upgrade_20261123/REPORT.md) · [Đối chiếu từng câu](results/upgrade_20261123/GENERATION.md) · [Đánh giá Unicode](results/upgrade_20261123/RETRIEVAL.md)
 
 ## Cài lần đầu trên Windows
 
@@ -73,32 +74,7 @@ Mở URL in cạnh PID của phiên mới. ViCare chọn một cổng loopback t
 | Thủ đô của nước Úc là gì? | Từ chối với lý do ngoài phạm vi sức khỏe. |
 | Thuốc giả định ZYX-9000 có chữa khỏi mọi bệnh mạn tính không? | Từ chối do thiếu bằng chứng. |
 
-## Kết quả đo trên Windows
-
-| Cấu hình, cùng Dev100 | R@1 | R@3 | R@5 | R@10 | Gold trong top 50 ứng viên | Trung vị / p95 |
-|---|---:|---:|---:|---:|---:|---:|
-| Dense HNSW | 37% | 47% | 51% | 55% | 71% | 21 / 40 ms |
-| Hybrid v2, HNSW 80 đoạn | 38% | 52% | 56% | 60% | 74% | 97 / 338 ms |
-| Hybrid đã khóa trước đó, HNSW 200 đoạn | 38% | 52% | 55% | 60% | 74% | 96 / 398 ms |
-| **Hybrid chọn cho notebook, cosine chính xác** | **38%** | **52%** | **55%** | **60%** | **74%** | **92 / 343 ms** |
-
-Mỗi câu có một tài liệu tham chiếu trong kho tìm kiếm. Ở top 5, bản chọn tìm thêm 6 câu và mất 2 câu so với Dense. Khi thay HNSW trong Hybrid bằng cosine chính xác, Train200 tăng 123→125 hit. NoDiac50 giữ 22/50. Dev100 giữ 55/100 và tập xác nhận mới giữ 68/100. Ở top 1 trên tập xác nhận, bản chọn mất một câu, từ 49 xuống 48/100. Tất cả câu và lần giảm điểm được giữ trong kết quả. [Giao thức](results/colab/retrieval/protocol.md) · [CSV từng câu](results/colab/retrieval/per_question.csv) · [Kết quả Dev100](results/colab/retrieval/dev100.json)
-
-Dev100 đã tham gia phân tích lỗi trong lịch sử. Train200 và NoDiac50 dùng để chọn cấu hình. Confirm100 cũ đã được xem trước đợt này. Tập xác nhận mới được khóa trước phép thử, loại các câu, mã tài liệu và bài nguồn trùng theo quy tắc công bố, và chỉ đánh giá một lần sau khi chọn. [Khóa tập và kiểm tra chồng lặp](results/colab/retrieval/split_audit.json) · [Xác nhận trên 100 câu](results/colab/retrieval/confirmation100.json)
-
-Trên đúng 10 câu đầu dev, cả ba cấu hình đem chấm đều từ chối 9 câu và chuyển cấp cứu 1 câu. Judge cho 9/10 ở mỗi cấu hình, gồm tám lượt từ chối. Agent đối chiếu nguồn và phát hiện ít nhất ba lượt từ chối dù nguồn đầu đã đủ bằng chứng. [Đối chiếu từng câu](results/colab/generation/review.md)
-
-Để tái lập trên Windows, sau khi xây chỉ mục và chuẩn bị Ollama, chạy trong thư mục dự án.
-
-~~~powershell
-$env:VICARE_TORCH_THREADS = '4'
-$env:OPENBLAS_NUM_THREADS = '1'
-.\.venv\Scripts\python.exe -X utf8 -m benchmarks.retrieval_study final --output .private/retrieval-rerun
-.\.venv\Scripts\python.exe -X utf8 -m benchmarks.evaluate_generation --method Hybrid --output .private/generation-rerun/final.json
-.\.venv\Scripts\python.exe -X utf8 -m benchmarks.check_demo --output .private/demo-rerun.json
-~~~
-
-Lệnh generation ghi JSON và CSV rút gọn. Tùy chọn `--save-review-inputs` lưu văn bản để đối chiếu trong `.private/`. [Đánh giá từng câu trả lời](results/colab/generation/review.md) · [Kết quả Windows trước đợt này](results/submission/REPORT.md)
+[Số liệu phiên bản Windows và Colab trước ngày bàn giao](results/colab/REPORT.md)
 
 ## Nguồn và điều kiện sử dụng
 

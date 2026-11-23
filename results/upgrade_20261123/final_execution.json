@@ -1,0 +1,49 @@
+{
+  "environment": "local Linux CPU; not hosted Colab",
+  "request_timeout_seconds": 180,
+  "reason": "The earlier 45-second CPU demo request timed out; both generation arms use 180 seconds here.",
+  "stages": [
+    {
+      "name": "generation_before180",
+      "started_utc": "2026-11-23T02:35:59.327805+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 492.047
+    },
+    {
+      "name": "generation_final",
+      "started_utc": "2026-11-23T02:44:11.377233+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 460.52
+    },
+    {
+      "name": "demo_final",
+      "started_utc": "2026-11-23T02:51:51.898249+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 143.304
+    },
+    {
+      "name": "pytest_final",
+      "started_utc": "2026-11-23T02:54:15.203503+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 94.016
+    }
+  ],
+  "reviewed_source_freeze": {
+    "reviewed_utc": "2026-11-23T02:37:29.736095+00:00",
+    "phase": "v2: direct evidence comparison and source-context safeguards",
+    "source_sha256": {
+      "src/__init__.py": "2fdcbff592b82ac780b7cc2a0cdb771ef368d98555cbaab6ad3b60cf32719669",
+      "src/config.py": "3f7fc2036e7e1181c6aa93b4dc84f0b1201b68000ef082ab4a114166b0931f7a",
+      "src/dataset.py": "071db5fb6de8381321784ccc4dc805861f1714441ae561b3d6faac70239e9729",
+      "src/embeddings.py": "a5e0e6cd2ff63ae4f9a154ffde39f8b1df53425b722a33ec62e0b1db953a3eab",
+      "src/evaluation.py": "8ee37062b8596cd92193cf44c1179b25def1384093d7b5b869c23961274eb10c",
+      "src/exact_search.py": "570391358606b4724acf6efbf63e0d7119e574f4a684da5946e99c4ac5d45fbe",
+      "src/generation.py": "2514269ab52f180a22a5d67484bf9f2d5a2e01c0958fb7d6563607718c9d4422",
+      "src/ollama_runtime.py": "02315870fb0ace879c83a04c0f1b79adf5cd2d9ee4d4ad9e228a28e175f79861",
+      "src/retrieval.py": "f522b29322d235ff50141dd41ae31fac2443c3a9604ffbda44f8622998d6b132",
+      "src/safety.py": "d94c03248a923b4231e47bdfa79f89f335fe499e98c1922a89498fc585ae135d",
+      "benchmarks/evaluate_generation.py": "32bf9bee7bd5579b7e2cbae245e74084f989bd51bdd131734f21a0c5c6e14dff",
+      "benchmarks/check_demo.py": "9edd62612069f5c3cb114ceb9970a8820830756488492711ca35c01d4096f71a"
+    }
+  }
+}
