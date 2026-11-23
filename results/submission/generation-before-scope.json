@@ -1,0 +1,74 @@
+{
+  "dataset_revision": "d90a62deedfc822a15de3f35535bb41474e4d3f4",
+  "dev100_ordered_questions_sha256": "5a0f84a1a3f4834af5eb21c2eee5ddb17d977f7fec321fba65e1c5606e3ab8fa",
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "judge_prompt_sha256": "ead398d1be6e99839262ae652bc4a727f9c46942203170a21fe8597e19754e70",
+  "judge_hits": 9,
+  "n_questions": 10,
+  "refusals": 6,
+  "invalid_judgments_including_errors": 0,
+  "technical_failures": 0,
+  "run": "before_scope_fix",
+  "rows": [
+    {
+      "id": "d000",
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 0
+    },
+    {
+      "id": "d001",
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 1
+    },
+    {
+      "id": "d002",
+      "status": "answered",
+      "reason_code": "SUPPORTED",
+      "judge_score": 1
+    },
+    {
+      "id": "d003",
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 1
+    },
+    {
+      "id": "d004",
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 1
+    },
+    {
+      "id": "d005",
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 1
+    },
+    {
+      "id": "d006",
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 1
+    },
+    {
+      "id": "d007",
+      "status": "answered",
+      "reason_code": "SUPPORTED",
+      "judge_score": 1
+    },
+    {
+      "id": "d008",
+      "status": "answered",
+      "reason_code": "SUPPORTED",
+      "judge_score": 1
+    },
+    {
+      "id": "d009",
+      "status": "emergency",
+      "reason_code": "EMERGENCY",
+      "judge_score": 1
+    }
+  ]
+}

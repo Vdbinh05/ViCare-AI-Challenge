@@ -1,0 +1,330 @@
+{
+  "finished_utc": "2026-11-23T01:08:37.421039+00:00",
+  "dataset_revision": "d90a62deedfc822a15de3f35535bb41474e4d3f4",
+  "corpus_sha256": "35902972d43e0841495d6f920901c99146d08e7e745cb5670c76d3d9f367ea87",
+  "dev100_ordered_questions_sha256": "5a0f84a1a3f4834af5eb21c2eee5ddb17d977f7fec321fba65e1c5606e3ab8fa",
+  "selection": "dev[:10]",
+  "method": "Hybrid",
+  "candidate_pool": 80,
+  "hybrid_dense_depth": 200,
+  "rrf_k": 40,
+  "top_k": 5,
+  "dense_threshold": 0.86,
+  "generation_model": "qwen3:4b-instruct",
+  "judge_model": "qwen3:4b-instruct",
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "judge_prompt_sha256": "ead398d1be6e99839262ae652bc4a727f9c46942203170a21fe8597e19754e70",
+  "judge_options": {
+    "temperature": 0,
+    "num_predict": 8
+  },
+  "judge_gold_max_chars": 1500,
+  "n_questions": 10,
+  "judge_hits": 9,
+  "judge_rate": 0.9,
+  "invalid_judgments_including_errors": 0,
+  "judge_request_errors": 0,
+  "refusals": 8,
+  "refusal_rate": 0.8,
+  "refusal_definition": "status == refused; excludes technical failures and emergency redirects",
+  "notebook_literal_refusals": 0,
+  "notebook_literal_refusal_rate": 0.0,
+  "technical_failures": 0,
+  "reason_counts": {
+    "INSUFFICIENT_EVIDENCE": 8,
+    "SUPPORTED": 1,
+    "EMERGENCY": 1
+  },
+  "rows": [
+    {
+      "id": "d000",
+      "source_id": "validation-122",
+      "gold_doc_ids": [
+        "validation-122"
+      ],
+      "retrieved_doc_ids": [
+        "validation-122",
+        "train-897",
+        "train-1635",
+        "train-6119",
+        "train-6103"
+      ],
+      "gold_found": true,
+      "visible_doc_ids": [
+        "validation-122",
+        "train-897",
+        "train-1635",
+        "train-6119",
+        "train-6103"
+      ],
+      "cited_doc_ids": [],
+      "top_dense_score": 0.9287991300225258,
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 0,
+      "judge_error_type": null,
+      "generation_ms": 2381.5,
+      "judge_ms": 56.4
+    },
+    {
+      "id": "d001",
+      "source_id": "validation-328",
+      "gold_doc_ids": [
+        "validation-328"
+      ],
+      "retrieved_doc_ids": [
+        "train-5007",
+        "validation-956",
+        "train-6457",
+        "train-521",
+        "train-1450"
+      ],
+      "gold_found": false,
+      "visible_doc_ids": [
+        "train-5007",
+        "validation-956",
+        "train-6457",
+        "train-521",
+        "train-1450"
+      ],
+      "cited_doc_ids": [],
+      "top_dense_score": 0.8906646370887756,
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 1,
+      "judge_error_type": null,
+      "generation_ms": 1700.0,
+      "judge_ms": 75.2
+    },
+    {
+      "id": "d002",
+      "source_id": "validation-515",
+      "gold_doc_ids": [
+        "validation-515"
+      ],
+      "retrieved_doc_ids": [
+        "validation-515",
+        "train-3342",
+        "train-4416",
+        "test-892",
+        "train-5386"
+      ],
+      "gold_found": true,
+      "visible_doc_ids": [
+        "validation-515",
+        "train-3342",
+        "train-4416",
+        "test-892",
+        "train-5386"
+      ],
+      "cited_doc_ids": [
+        "validation-515"
+      ],
+      "top_dense_score": 0.8804327249526978,
+      "status": "answered",
+      "reason_code": "SUPPORTED",
+      "judge_score": 1,
+      "judge_error_type": null,
+      "generation_ms": 2375.4,
+      "judge_ms": 56.9
+    },
+    {
+      "id": "d003",
+      "source_id": "validation-975",
+      "gold_doc_ids": [
+        "validation-975"
+      ],
+      "retrieved_doc_ids": [
+        "validation-255",
+        "train-5874",
+        "train-3673",
+        "train-3368",
+        "train-750"
+      ],
+      "gold_found": false,
+      "visible_doc_ids": [
+        "validation-255",
+        "train-5874",
+        "train-3673",
+        "train-3368",
+        "train-750"
+      ],
+      "cited_doc_ids": [],
+      "top_dense_score": 0.8978952243924141,
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 1,
+      "judge_error_type": null,
+      "generation_ms": 2200.4,
+      "judge_ms": 105.2
+    },
+    {
+      "id": "d004",
+      "source_id": "validation-525",
+      "gold_doc_ids": [
+        "validation-525"
+      ],
+      "retrieved_doc_ids": [
+        "validation-525",
+        "train-715",
+        "test-378",
+        "train-3908",
+        "train-2379"
+      ],
+      "gold_found": true,
+      "visible_doc_ids": [
+        "validation-525",
+        "train-715",
+        "test-378",
+        "train-3908",
+        "train-2379"
+      ],
+      "cited_doc_ids": [],
+      "top_dense_score": 0.8941531032323837,
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 1,
+      "judge_error_type": null,
+      "generation_ms": 1588.1,
+      "judge_ms": 54.8
+    },
+    {
+      "id": "d005",
+      "source_id": "validation-663",
+      "gold_doc_ids": [
+        "validation-663"
+      ],
+      "retrieved_doc_ids": [
+        "train-61",
+        "validation-663",
+        "train-4504",
+        "train-3105",
+        "test-1120"
+      ],
+      "gold_found": true,
+      "visible_doc_ids": [
+        "train-61",
+        "validation-663",
+        "train-4504",
+        "train-3105",
+        "test-1120"
+      ],
+      "cited_doc_ids": [],
+      "top_dense_score": 0.8898087292909622,
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 1,
+      "judge_error_type": null,
+      "generation_ms": 1344.2,
+      "judge_ms": 56.8
+    },
+    {
+      "id": "d006",
+      "source_id": "validation-881",
+      "gold_doc_ids": [
+        "validation-881"
+      ],
+      "retrieved_doc_ids": [
+        "train-1206",
+        "validation-620",
+        "test-560",
+        "validation-320",
+        "train-79"
+      ],
+      "gold_found": false,
+      "visible_doc_ids": [
+        "train-1206",
+        "validation-620",
+        "test-560",
+        "validation-320",
+        "train-79"
+      ],
+      "cited_doc_ids": [],
+      "top_dense_score": 0.9213219955563545,
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 1,
+      "judge_error_type": null,
+      "generation_ms": 2787.2,
+      "judge_ms": 52.7
+    },
+    {
+      "id": "d007",
+      "source_id": "validation-976",
+      "gold_doc_ids": [
+        "validation-976"
+      ],
+      "retrieved_doc_ids": [
+        "test-283",
+        "validation-703",
+        "train-865",
+        "test-337",
+        "train-5013"
+      ],
+      "gold_found": false,
+      "visible_doc_ids": [
+        "test-283",
+        "validation-703",
+        "train-865",
+        "test-337",
+        "train-5013"
+      ],
+      "cited_doc_ids": [],
+      "top_dense_score": 0.8986402302980423,
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 1,
+      "judge_error_type": null,
+      "generation_ms": 1589.0,
+      "judge_ms": 85.1
+    },
+    {
+      "id": "d008",
+      "source_id": "validation-106",
+      "gold_doc_ids": [
+        "validation-106"
+      ],
+      "retrieved_doc_ids": [
+        "test-1972",
+        "validation-693",
+        "train-5095",
+        "train-4001",
+        "train-4205"
+      ],
+      "gold_found": false,
+      "visible_doc_ids": [
+        "test-1972",
+        "validation-693",
+        "train-5095",
+        "train-4001",
+        "train-4205"
+      ],
+      "cited_doc_ids": [],
+      "top_dense_score": 0.9272141382098198,
+      "status": "refused",
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "judge_score": 1,
+      "judge_error_type": null,
+      "generation_ms": 2560.4,
+      "judge_ms": 92.2
+    },
+    {
+      "id": "d009",
+      "source_id": "validation-906",
+      "gold_doc_ids": [
+        "validation-906"
+      ],
+      "retrieved_doc_ids": [],
+      "gold_found": false,
+      "visible_doc_ids": [],
+      "cited_doc_ids": [],
+      "top_dense_score": null,
+      "status": "emergency",
+      "reason_code": "EMERGENCY",
+      "judge_score": 1,
+      "judge_error_type": null,
+      "generation_ms": 0.0,
+      "judge_ms": 60.8
+    }
+  ]
+}

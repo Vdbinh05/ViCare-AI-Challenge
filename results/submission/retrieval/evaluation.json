@@ -1,0 +1,874 @@
+{
+  "status": "COMPLETED",
+  "timestamp_utc": "2026-11-23T01:02:19.767331+00:00",
+  "reproduction": [
+    ".\\.venv\\Scripts\\python.exe -X utf8 -m src.evaluation --output results/submission/retrieval"
+  ],
+  "n_questions": 100,
+  "identity": {
+    "dataset": "tarudesu/ViHealthQA",
+    "dataset_revision": "d90a62deedfc822a15de3f35535bb41474e4d3f4",
+    "split_counts": {
+      "train": 7009,
+      "validation": 993,
+      "test": 2013
+    },
+    "documents": 9895,
+    "chunks": 11227,
+    "corpus_sha256": "35902972d43e0841495d6f920901c99146d08e7e745cb5670c76d3d9f367ea87",
+    "ordered_questions_sha256": "5a0f84a1a3f4834af5eb21c2eee5ddb17d977f7fec321fba65e1c5606e3ab8fa",
+    "questions": [
+      {
+        "id": "d000",
+        "source_id": "validation-122",
+        "gold_doc_ids": [
+          "validation-122"
+        ]
+      },
+      {
+        "id": "d001",
+        "source_id": "validation-328",
+        "gold_doc_ids": [
+          "validation-328"
+        ]
+      },
+      {
+        "id": "d002",
+        "source_id": "validation-515",
+        "gold_doc_ids": [
+          "validation-515"
+        ]
+      },
+      {
+        "id": "d003",
+        "source_id": "validation-975",
+        "gold_doc_ids": [
+          "validation-975"
+        ]
+      },
+      {
+        "id": "d004",
+        "source_id": "validation-525",
+        "gold_doc_ids": [
+          "validation-525"
+        ]
+      },
+      {
+        "id": "d005",
+        "source_id": "validation-663",
+        "gold_doc_ids": [
+          "validation-663"
+        ]
+      },
+      {
+        "id": "d006",
+        "source_id": "validation-881",
+        "gold_doc_ids": [
+          "validation-881"
+        ]
+      },
+      {
+        "id": "d007",
+        "source_id": "validation-976",
+        "gold_doc_ids": [
+          "validation-976"
+        ]
+      },
+      {
+        "id": "d008",
+        "source_id": "validation-106",
+        "gold_doc_ids": [
+          "validation-106"
+        ]
+      },
+      {
+        "id": "d009",
+        "source_id": "validation-906",
+        "gold_doc_ids": [
+          "validation-906"
+        ]
+      },
+      {
+        "id": "d010",
+        "source_id": "validation-229",
+        "gold_doc_ids": [
+          "train-779"
+        ]
+      },
+      {
+        "id": "d011",
+        "source_id": "validation-917",
+        "gold_doc_ids": [
+          "validation-917"
+        ]
+      },
+      {
+        "id": "d012",
+        "source_id": "validation-616",
+        "gold_doc_ids": [
+          "validation-616"
+        ]
+      },
+      {
+        "id": "d013",
+        "source_id": "validation-637",
+        "gold_doc_ids": [
+          "validation-637"
+        ]
+      },
+      {
+        "id": "d014",
+        "source_id": "validation-570",
+        "gold_doc_ids": [
+          "validation-570"
+        ]
+      },
+      {
+        "id": "d015",
+        "source_id": "validation-431",
+        "gold_doc_ids": [
+          "validation-431"
+        ]
+      },
+      {
+        "id": "d016",
+        "source_id": "validation-803",
+        "gold_doc_ids": [
+          "validation-803"
+        ]
+      },
+      {
+        "id": "d017",
+        "source_id": "validation-587",
+        "gold_doc_ids": [
+          "validation-587"
+        ]
+      },
+      {
+        "id": "d018",
+        "source_id": "validation-561",
+        "gold_doc_ids": [
+          "validation-561"
+        ]
+      },
+      {
+        "id": "d019",
+        "source_id": "validation-863",
+        "gold_doc_ids": [
+          "validation-863"
+        ]
+      },
+      {
+        "id": "d020",
+        "source_id": "validation-749",
+        "gold_doc_ids": [
+          "validation-749"
+        ]
+      },
+      {
+        "id": "d021",
+        "source_id": "validation-796",
+        "gold_doc_ids": [
+          "validation-796"
+        ]
+      },
+      {
+        "id": "d022",
+        "source_id": "validation-787",
+        "gold_doc_ids": [
+          "validation-787"
+        ]
+      },
+      {
+        "id": "d023",
+        "source_id": "validation-503",
+        "gold_doc_ids": [
+          "validation-503"
+        ]
+      },
+      {
+        "id": "d024",
+        "source_id": "validation-770",
+        "gold_doc_ids": [
+          "validation-770"
+        ]
+      },
+      {
+        "id": "d025",
+        "source_id": "validation-792",
+        "gold_doc_ids": [
+          "validation-792"
+        ]
+      },
+      {
+        "id": "d026",
+        "source_id": "validation-601",
+        "gold_doc_ids": [
+          "validation-601"
+        ]
+      },
+      {
+        "id": "d027",
+        "source_id": "validation-452",
+        "gold_doc_ids": [
+          "validation-452"
+        ]
+      },
+      {
+        "id": "d028",
+        "source_id": "validation-246",
+        "gold_doc_ids": [
+          "validation-246"
+        ]
+      },
+      {
+        "id": "d029",
+        "source_id": "validation-3",
+        "gold_doc_ids": [
+          "validation-3"
+        ]
+      },
+      {
+        "id": "d030",
+        "source_id": "validation-629",
+        "gold_doc_ids": [
+          "validation-629"
+        ]
+      },
+      {
+        "id": "d031",
+        "source_id": "validation-83",
+        "gold_doc_ids": [
+          "validation-83"
+        ]
+      },
+      {
+        "id": "d032",
+        "source_id": "validation-114",
+        "gold_doc_ids": [
+          "validation-114"
+        ]
+      },
+      {
+        "id": "d033",
+        "source_id": "validation-295",
+        "gold_doc_ids": [
+          "validation-295"
+        ]
+      },
+      {
+        "id": "d034",
+        "source_id": "validation-837",
+        "gold_doc_ids": [
+          "validation-837"
+        ]
+      },
+      {
+        "id": "d035",
+        "source_id": "validation-101",
+        "gold_doc_ids": [
+          "validation-101"
+        ]
+      },
+      {
+        "id": "d036",
+        "source_id": "validation-461",
+        "gold_doc_ids": [
+          "validation-461"
+        ]
+      },
+      {
+        "id": "d037",
+        "source_id": "validation-12",
+        "gold_doc_ids": [
+          "validation-12"
+        ]
+      },
+      {
+        "id": "d038",
+        "source_id": "validation-835",
+        "gold_doc_ids": [
+          "validation-835"
+        ]
+      },
+      {
+        "id": "d039",
+        "source_id": "validation-913",
+        "gold_doc_ids": [
+          "validation-913"
+        ]
+      },
+      {
+        "id": "d040",
+        "source_id": "validation-702",
+        "gold_doc_ids": [
+          "validation-702"
+        ]
+      },
+      {
+        "id": "d041",
+        "source_id": "validation-970",
+        "gold_doc_ids": [
+          "validation-970"
+        ]
+      },
+      {
+        "id": "d042",
+        "source_id": "validation-696",
+        "gold_doc_ids": [
+          "validation-696"
+        ]
+      },
+      {
+        "id": "d043",
+        "source_id": "validation-322",
+        "gold_doc_ids": [
+          "validation-322"
+        ]
+      },
+      {
+        "id": "d044",
+        "source_id": "validation-216",
+        "gold_doc_ids": [
+          "validation-216"
+        ]
+      },
+      {
+        "id": "d045",
+        "source_id": "validation-407",
+        "gold_doc_ids": [
+          "validation-407"
+        ]
+      },
+      {
+        "id": "d046",
+        "source_id": "validation-258",
+        "gold_doc_ids": [
+          "validation-258"
+        ]
+      },
+      {
+        "id": "d047",
+        "source_id": "validation-357",
+        "gold_doc_ids": [
+          "validation-357"
+        ]
+      },
+      {
+        "id": "d048",
+        "source_id": "validation-366",
+        "gold_doc_ids": [
+          "validation-366"
+        ]
+      },
+      {
+        "id": "d049",
+        "source_id": "validation-825",
+        "gold_doc_ids": [
+          "validation-825"
+        ]
+      },
+      {
+        "id": "d050",
+        "source_id": "validation-386",
+        "gold_doc_ids": [
+          "validation-386"
+        ]
+      },
+      {
+        "id": "d051",
+        "source_id": "validation-764",
+        "gold_doc_ids": [
+          "validation-764"
+        ]
+      },
+      {
+        "id": "d052",
+        "source_id": "validation-526",
+        "gold_doc_ids": [
+          "validation-526"
+        ]
+      },
+      {
+        "id": "d053",
+        "source_id": "validation-654",
+        "gold_doc_ids": [
+          "validation-654"
+        ]
+      },
+      {
+        "id": "d054",
+        "source_id": "validation-79",
+        "gold_doc_ids": [
+          "validation-79"
+        ]
+      },
+      {
+        "id": "d055",
+        "source_id": "validation-741",
+        "gold_doc_ids": [
+          "validation-741"
+        ]
+      },
+      {
+        "id": "d056",
+        "source_id": "validation-349",
+        "gold_doc_ids": [
+          "validation-349"
+        ]
+      },
+      {
+        "id": "d057",
+        "source_id": "validation-92",
+        "gold_doc_ids": [
+          "validation-92"
+        ]
+      },
+      {
+        "id": "d058",
+        "source_id": "validation-571",
+        "gold_doc_ids": [
+          "validation-571"
+        ]
+      },
+      {
+        "id": "d059",
+        "source_id": "validation-551",
+        "gold_doc_ids": [
+          "validation-551"
+        ]
+      },
+      {
+        "id": "d060",
+        "source_id": "validation-300",
+        "gold_doc_ids": [
+          "validation-300"
+        ]
+      },
+      {
+        "id": "d061",
+        "source_id": "validation-960",
+        "gold_doc_ids": [
+          "validation-960"
+        ]
+      },
+      {
+        "id": "d062",
+        "source_id": "validation-469",
+        "gold_doc_ids": [
+          "validation-469"
+        ]
+      },
+      {
+        "id": "d063",
+        "source_id": "validation-145",
+        "gold_doc_ids": [
+          "validation-145"
+        ]
+      },
+      {
+        "id": "d064",
+        "source_id": "validation-898",
+        "gold_doc_ids": [
+          "validation-898"
+        ]
+      },
+      {
+        "id": "d065",
+        "source_id": "validation-661",
+        "gold_doc_ids": [
+          "validation-661"
+        ]
+      },
+      {
+        "id": "d066",
+        "source_id": "validation-721",
+        "gold_doc_ids": [
+          "validation-721"
+        ]
+      },
+      {
+        "id": "d067",
+        "source_id": "validation-734",
+        "gold_doc_ids": [
+          "validation-734"
+        ]
+      },
+      {
+        "id": "d068",
+        "source_id": "validation-592",
+        "gold_doc_ids": [
+          "validation-592"
+        ]
+      },
+      {
+        "id": "d069",
+        "source_id": "validation-317",
+        "gold_doc_ids": [
+          "validation-317"
+        ]
+      },
+      {
+        "id": "d070",
+        "source_id": "validation-26",
+        "gold_doc_ids": [
+          "validation-26"
+        ]
+      },
+      {
+        "id": "d071",
+        "source_id": "validation-869",
+        "gold_doc_ids": [
+          "validation-869"
+        ]
+      },
+      {
+        "id": "d072",
+        "source_id": "validation-728",
+        "gold_doc_ids": [
+          "validation-728"
+        ]
+      },
+      {
+        "id": "d073",
+        "source_id": "validation-378",
+        "gold_doc_ids": [
+          "validation-378"
+        ]
+      },
+      {
+        "id": "d074",
+        "source_id": "validation-373",
+        "gold_doc_ids": [
+          "validation-373"
+        ]
+      },
+      {
+        "id": "d075",
+        "source_id": "validation-473",
+        "gold_doc_ids": [
+          "validation-473"
+        ]
+      },
+      {
+        "id": "d076",
+        "source_id": "validation-433",
+        "gold_doc_ids": [
+          "validation-433"
+        ]
+      },
+      {
+        "id": "d077",
+        "source_id": "validation-93",
+        "gold_doc_ids": [
+          "validation-93"
+        ]
+      },
+      {
+        "id": "d078",
+        "source_id": "validation-409",
+        "gold_doc_ids": [
+          "validation-409"
+        ]
+      },
+      {
+        "id": "d079",
+        "source_id": "validation-954",
+        "gold_doc_ids": [
+          "validation-954"
+        ]
+      },
+      {
+        "id": "d080",
+        "source_id": "validation-600",
+        "gold_doc_ids": [
+          "validation-600"
+        ]
+      },
+      {
+        "id": "d081",
+        "source_id": "validation-568",
+        "gold_doc_ids": [
+          "validation-568"
+        ]
+      },
+      {
+        "id": "d082",
+        "source_id": "validation-511",
+        "gold_doc_ids": [
+          "validation-511"
+        ]
+      },
+      {
+        "id": "d083",
+        "source_id": "validation-889",
+        "gold_doc_ids": [
+          "validation-889"
+        ]
+      },
+      {
+        "id": "d084",
+        "source_id": "validation-120",
+        "gold_doc_ids": [
+          "validation-120"
+        ]
+      },
+      {
+        "id": "d085",
+        "source_id": "validation-436",
+        "gold_doc_ids": [
+          "validation-436"
+        ]
+      },
+      {
+        "id": "d086",
+        "source_id": "validation-519",
+        "gold_doc_ids": [
+          "validation-519"
+        ]
+      },
+      {
+        "id": "d087",
+        "source_id": "validation-822",
+        "gold_doc_ids": [
+          "validation-822"
+        ]
+      },
+      {
+        "id": "d088",
+        "source_id": "validation-769",
+        "gold_doc_ids": [
+          "validation-769"
+        ]
+      },
+      {
+        "id": "d089",
+        "source_id": "validation-888",
+        "gold_doc_ids": [
+          "validation-888"
+        ]
+      },
+      {
+        "id": "d090",
+        "source_id": "validation-615",
+        "gold_doc_ids": [
+          "validation-615"
+        ]
+      },
+      {
+        "id": "d091",
+        "source_id": "validation-897",
+        "gold_doc_ids": [
+          "validation-897"
+        ]
+      },
+      {
+        "id": "d092",
+        "source_id": "validation-952",
+        "gold_doc_ids": [
+          "validation-952"
+        ]
+      },
+      {
+        "id": "d093",
+        "source_id": "validation-408",
+        "gold_doc_ids": [
+          "validation-408"
+        ]
+      },
+      {
+        "id": "d094",
+        "source_id": "validation-538",
+        "gold_doc_ids": [
+          "validation-538"
+        ]
+      },
+      {
+        "id": "d095",
+        "source_id": "validation-265",
+        "gold_doc_ids": [
+          "train-1372"
+        ]
+      },
+      {
+        "id": "d096",
+        "source_id": "validation-865",
+        "gold_doc_ids": [
+          "validation-865"
+        ]
+      },
+      {
+        "id": "d097",
+        "source_id": "validation-978",
+        "gold_doc_ids": [
+          "validation-978"
+        ]
+      },
+      {
+        "id": "d098",
+        "source_id": "validation-578",
+        "gold_doc_ids": [
+          "validation-578"
+        ]
+      },
+      {
+        "id": "d099",
+        "source_id": "validation-491",
+        "gold_doc_ids": [
+          "validation-491"
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "chunk_size": 200,
+    "overlap": 40,
+    "embedding_model": "intfloat/multilingual-e5-small",
+    "embedding_revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "normalized": true,
+    "dense": {
+      "backend": "ChromaDB HNSW",
+      "distance": "squared L2",
+      "candidate_pool_at_eval_k": 100,
+      "query_cleaning": "conservative greeting stripping (>=4 words preserved)"
+    },
+    "hybrid": {
+      "version": "Hybrid RRF, Chroma 200, retain 80",
+      "candidate_pool_per_branch": 80,
+      "dense_query_depth": 200,
+      "rrf_k": 40,
+      "dense_weight": 0.5,
+      "sparse_weight": 0.5,
+      "bm25_granularity": "document-level",
+      "bm25_k1": 1.2,
+      "bm25_b": 0.75,
+      "query_cleaning": "conservative greeting stripping (>=4 words preserved)",
+      "tokenization": "strictly accented Vietnamese stopwords, accented unigrams/bigrams, adaptive diacritic-free fold",
+      "sparse_backend": "rank-bm25 BM25Okapi (k1=1.2, b=0.75)"
+    },
+    "ks": [
+      1,
+      3,
+      5,
+      10
+    ],
+    "development_seed": 2026,
+    "warmups_per_method": 3,
+    "latency": "perf_counter, per-query retrieval only, alternating first method per pair",
+    "generation": false,
+    "similarity_refusal": false
+  },
+  "hardware": {
+    "platform": "Windows-10-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "logical_cpus": 32,
+    "embedding_device": "cpu",
+    "gpu": null,
+    "torch_threads": 8
+  },
+  "versions": {
+    "python": "3.11.0",
+    "torch": "2.7.1",
+    "transformers": "4.52.4",
+    "sentence-transformers": "3.4.1",
+    "chromadb": "1.0.20",
+    "rank-bm25": "0.2.2",
+    "datasets": "3.6.0",
+    "numpy": "1.26.4",
+    "pyarrow": "21.0.0"
+  },
+  "metrics": {
+    "Dense": {
+      "recall@1": 0.37,
+      "recall@3": 0.47,
+      "recall@5": 0.51,
+      "recall@10": 0.55,
+      "coverage": 1,
+      "latency_ms": {
+        "mean": 24.44752399926074,
+        "median": 23.88844999950379,
+        "p95": 37.22484499157872
+      }
+    },
+    "Hybrid": {
+      "recall@1": 0.38,
+      "recall@3": 0.52,
+      "recall@5": 0.55,
+      "recall@10": 0.6,
+      "coverage": 1,
+      "latency_ms": {
+        "mean": 130.0057270016987,
+        "median": 89.48130000499077,
+        "p95": 276.1149350044434
+      }
+    }
+  },
+  "limitation": "The evaluation corpus contains reference answers from the dataset splits. Recall@K measures retrieval of known reference documents. It does not measure real-world medical correctness and is not an independent generalization test.",
+  "paired_hybrid_vs_dense": {
+    "hit@1": {
+      "wins": [
+        "d002",
+        "d014",
+        "d028",
+        "d031",
+        "d058",
+        "d069",
+        "d089"
+      ],
+      "losses": [
+        "d018",
+        "d025",
+        "d055",
+        "d057",
+        "d087",
+        "d091"
+      ]
+    },
+    "hit@3": {
+      "wins": [
+        "d005",
+        "d014",
+        "d028",
+        "d030",
+        "d033",
+        "d081",
+        "d096",
+        "d098"
+      ],
+      "losses": [
+        "d007",
+        "d009",
+        "d034"
+      ]
+    },
+    "hit@5": {
+      "wins": [
+        "d005",
+        "d027",
+        "d028",
+        "d030",
+        "d081",
+        "d098"
+      ],
+      "losses": [
+        "d007",
+        "d034"
+      ]
+    },
+    "hit@10": {
+      "wins": [
+        "d001",
+        "d027",
+        "d028",
+        "d071",
+        "d081",
+        "d086",
+        "d098"
+      ],
+      "losses": [
+        "d008",
+        "d072"
+      ]
+    }
+  }
+}
